@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_all_releases",
+  "info": {
+    "displayName": "Releases",
+    "icon": "music"
+  },
+  "options": {},
+  "attributes": {
+    "release_name": {
+      "type": "string",
+      "regex": ".*"
+    },
+    "release_artwork": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "fanlink": {
+      "type": "string"
+    }
+  }
+}

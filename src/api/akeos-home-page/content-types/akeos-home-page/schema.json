@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "akeos_home_pages",
+  "info": {
+    "singularName": "akeos-home-page",
+    "pluralName": "akeos-home-pages",
+    "displayName": "[Akeos] | Home Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "releases": {
+      "type": "component",
+      "repeatable": true,
+      "component": "all.releases"
+    }
+  }
+}
