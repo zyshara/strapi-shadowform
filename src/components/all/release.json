@@ -1,27 +1,26 @@
 {
   "collectionName": "components_all_releases",
   "info": {
-    "displayName": "Releases",
+    "displayName": "Release",
     "icon": "music"
   },
   "options": {},
   "attributes": {
     "release_name": {
       "type": "string",
-      "regex": ".*"
+      "required": true
+    },
+    "release_fan_link": {
+      "type": "string",
+      "required": true
     },
     "release_artwork": {
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ],
       "type": "media",
-      "multiple": false
-    },
-    "fanlink": {
-      "type": "string"
+      "multiple": true,
+      "required": true
     }
   }
 }

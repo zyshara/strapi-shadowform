@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "akeos_home_pages",
+  "collectionName": "akeos_releases",
   "info": {
-    "singularName": "akeos-home-page",
-    "pluralName": "akeos-home-pages",
-    "displayName": "[Akeos] | Home Page"
+    "singularName": "akeos-release",
+    "pluralName": "akeos-releases",
+    "displayName": "Akeos Releases"
   },
   "options": {
     "draftAndPublish": true
@@ -14,7 +14,7 @@
     "releases": {
       "type": "component",
       "repeatable": true,
-      "component": "all.releases"
+      "component": "all.release"
     }
   }
 }
