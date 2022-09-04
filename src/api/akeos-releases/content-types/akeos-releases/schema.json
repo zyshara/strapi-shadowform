@@ -1,9 +1,9 @@
 {
   "kind": "singleType",
-  "collectionName": "akeos_releases",
+  "collectionName": "all_akeos_releases",
   "info": {
-    "singularName": "akeos-release",
-    "pluralName": "akeos-releases",
+    "singularName": "akeos-releases",
+    "pluralName": "all-akeos-releases",
     "displayName": "Akeos Releases"
   },
   "options": {
