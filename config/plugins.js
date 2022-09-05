@@ -8,6 +8,9 @@ const getServiceAccount = (base64EncodedServiceAccount) => {
 
 module.exports = ({ env }) => ({
     upload: {
+        breakpoints: {
+            small: 500,
+        },
         config: {
             provider: '@strapi-community/strapi-provider-upload-google-cloud-storage',
             providerOptions: {
