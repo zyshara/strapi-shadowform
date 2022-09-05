@@ -4,7 +4,8 @@
   "info": {
     "singularName": "akeos-releases",
     "pluralName": "all-akeos-releases",
-    "displayName": "Akeos Releases"
+    "displayName": "Akeos Releases",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
