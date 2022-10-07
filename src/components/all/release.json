@@ -7,21 +7,20 @@
   },
   "options": {},
   "attributes": {
-    "release_name": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "release_fan_link": {
-      "type": "string",
-      "required": true
-    },
-    "release_artwork": {
+    "cover": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ]
+    },
+    "fan_link": {
+      "type": "string"
     }
   }
 }

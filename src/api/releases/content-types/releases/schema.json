@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "releases",
+  "collectionName": "all_releases",
   "info": {
-    "singularName": "release",
-    "pluralName": "releases",
+    "singularName": "releases",
+    "pluralName": "all-releases",
     "displayName": "Releases",
     "description": ""
   },
@@ -12,13 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
     "release": {
       "type": "component",
       "repeatable": true,
       "component": "all.release"
-    },
-    "title": {
-      "type": "string"
     }
   }
 }

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * release controller
+ * releases controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::release.release');
+module.exports = createCoreController('api::releases.releases');

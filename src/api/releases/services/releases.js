@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * release service
+ * releases service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::release.release');
+module.exports = createCoreService('api::releases.releases');

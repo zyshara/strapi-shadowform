@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * release router
+ * releases router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::release.release');
+module.exports = createCoreRouter('api::releases.releases');
