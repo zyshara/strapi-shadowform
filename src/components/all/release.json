@@ -9,7 +9,7 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "fan_link": {
       "type": "string"
