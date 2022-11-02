@@ -28,11 +28,17 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "single, album, ep"
+        "single",
+        "album",
+        "ep"
       ]
     },
     "artist": {
       "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
     }
   }
 }
