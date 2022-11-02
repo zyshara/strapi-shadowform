@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "discographies",
+  "info": {
+    "singularName": "discography",
+    "pluralName": "discographies",
+    "displayName": "Discography"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "releases": {
+      "type": "component",
+      "repeatable": true,
+      "component": "all.release",
+      "required": false
+    }
+  }
+}

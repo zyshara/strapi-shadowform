@@ -18,11 +18,21 @@
       "type": "date"
     },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "single, album, ep"
+      ]
+    },
+    "artist": {
+      "type": "string"
     }
   }
 }
