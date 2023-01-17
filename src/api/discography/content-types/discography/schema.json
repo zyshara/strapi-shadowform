@@ -4,7 +4,8 @@
   "info": {
     "singularName": "discography",
     "pluralName": "discographies",
-    "displayName": "Discography"
+    "displayName": "Discography",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
