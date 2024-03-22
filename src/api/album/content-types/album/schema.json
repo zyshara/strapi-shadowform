@@ -12,22 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "release_date": {
-      "type": "date"
-    },
-    "cover_art": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "fanlink": {
-      "type": "string"
+    "release_information": {
+      "type": "component",
+      "repeatable": false,
+      "component": "all.release-information"
     }
   }
 }

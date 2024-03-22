@@ -1,17 +1,18 @@
 {
   "kind": "collectionType",
-  "collectionName": "tracks",
+  "collectionName": "artists",
   "info": {
-    "singularName": "track",
-    "pluralName": "tracks",
-    "displayName": "Track"
+    "singularName": "artist",
+    "pluralName": "artists",
+    "displayName": "Artist",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "Name": {
       "type": "string"
     }
   }

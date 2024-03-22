@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "singles",
+  "collectionName": "compilations",
   "info": {
-    "singularName": "single",
-    "pluralName": "singles",
-    "displayName": "Single",
-    "description": ""
+    "singularName": "compilation",
+    "pluralName": "compilations",
+    "displayName": "Compilation"
   },
   "options": {
     "draftAndPublish": true

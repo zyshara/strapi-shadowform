@@ -800,10 +800,7 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    release_date: Attribute.Date;
-    cover_art: Attribute.Media;
-    fanlink: Attribute.String;
+    release_information: Attribute.Component<'all.release-information'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -815,6 +812,67 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::album.album',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArtistArtist extends Schema.CollectionType {
+  collectionName: 'artists';
+  info: {
+    singularName: 'artist';
+    pluralName: 'artists';
+    displayName: 'Artist';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::artist.artist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::artist.artist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCompilationCompilation extends Schema.CollectionType {
+  collectionName: 'compilations';
+  info: {
+    singularName: 'compilation';
+    pluralName: 'compilations';
+    displayName: 'Compilation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    release_information: Attribute.Component<'all.release-information'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::compilation.compilation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::compilation.compilation',
       'oneToOne',
       'admin::user'
     > &
@@ -834,10 +892,7 @@ export interface ApiEpEp extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    release_date: Attribute.Date;
-    cover_art: Attribute.Media;
-    fanlink: Attribute.String;
+    release_information: Attribute.Component<'all.release-information'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -905,10 +960,7 @@ export interface ApiSingleSingle extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    release_date: Attribute.Date;
-    cover_art: Attribute.Media;
-    name: Attribute.String;
-    fanlink: Attribute.String;
+    release_information: Attribute.Component<'all.release-information'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -927,32 +979,30 @@ export interface ApiSingleSingle extends Schema.CollectionType {
   };
 }
 
-export interface ApiTrackTrack extends Schema.CollectionType {
-  collectionName: 'tracks';
+export interface ApiSongSong extends Schema.CollectionType {
+  collectionName: 'songs';
   info: {
-    singularName: 'track';
-    pluralName: 'tracks';
-    displayName: 'Track';
+    singularName: 'song';
+    pluralName: 'songs';
+    displayName: 'Song';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
+    artists: Attribute.Relation<
+      'api::song.song',
+      'oneToMany',
+      'api::artist.artist'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::track.track',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::song.song', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::track.track',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::song.song', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -976,10 +1026,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::album.album': ApiAlbumAlbum;
+      'api::artist.artist': ApiArtistArtist;
+      'api::compilation.compilation': ApiCompilationCompilation;
       'api::ep.ep': ApiEpEp;
       'api::halcyon-releases.halcyon-releases': ApiHalcyonReleasesHalcyonReleases;
       'api::single.single': ApiSingleSingle;
-      'api::track.track': ApiTrackTrack;
+      'api::song.song': ApiSongSong;
     }
   }
 }

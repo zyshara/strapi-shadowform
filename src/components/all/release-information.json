@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_all_release_informations",
+  "info": {
+    "displayName": "Release Information",
+    "icon": "music",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "release_date": {
+      "type": "date"
+    },
+    "fanlink": {
+      "type": "string"
+    },
+    "cover_art": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "songs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::song.song"
+    }
+  }
+}

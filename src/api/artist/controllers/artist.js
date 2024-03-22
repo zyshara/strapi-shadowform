@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * track controller
+ * artist controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::track.track');
+module.exports = createCoreController('api::artist.artist');
