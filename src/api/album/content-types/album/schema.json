@@ -16,6 +16,9 @@
       "type": "component",
       "repeatable": false,
       "component": "all.release-information"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

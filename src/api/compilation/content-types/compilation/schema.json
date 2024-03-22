@@ -4,7 +4,8 @@
   "info": {
     "singularName": "compilation",
     "pluralName": "compilations",
-    "displayName": "Compilation"
+    "displayName": "Compilation",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,9 @@
       "type": "component",
       "repeatable": false,
       "component": "all.release-information"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

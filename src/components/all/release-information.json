@@ -7,9 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
     "release_date": {
       "type": "date"
     },
@@ -28,6 +25,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::song.song"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

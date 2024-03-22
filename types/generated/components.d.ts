@@ -8,7 +8,6 @@ export interface AllReleaseInformation extends Schema.Component {
     description: '';
   };
   attributes: {
-    name: Attribute.String;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
@@ -17,6 +16,7 @@ export interface AllReleaseInformation extends Schema.Component {
       'oneToMany',
       'api::song.song'
     >;
+    title: Attribute.String;
   };
 }
 

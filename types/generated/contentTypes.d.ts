@@ -801,6 +801,7 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
   };
   attributes: {
     release_information: Attribute.Component<'all.release-information'>;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -856,12 +857,14 @@ export interface ApiCompilationCompilation extends Schema.CollectionType {
     singularName: 'compilation';
     pluralName: 'compilations';
     displayName: 'Compilation';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     release_information: Attribute.Component<'all.release-information'>;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -893,6 +896,7 @@ export interface ApiEpEp extends Schema.CollectionType {
   };
   attributes: {
     release_information: Attribute.Component<'all.release-information'>;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -966,6 +970,7 @@ export interface ApiSingleSingle extends Schema.CollectionType {
   };
   attributes: {
     release_information: Attribute.Component<'all.release-information'>;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
