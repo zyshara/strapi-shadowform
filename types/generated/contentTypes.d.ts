@@ -930,6 +930,11 @@ export interface ApiHalcyonReleasesHalcyonReleases extends Schema.SingleType {
       'oneToMany',
       'api::album.album'
     >;
+    compilations: Attribute.Relation<
+      'api::halcyon-releases.halcyon-releases',
+      'oneToMany',
+      'api::compilation.compilation'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

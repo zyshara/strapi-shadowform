@@ -26,6 +26,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::album.album"
+    },
+    "compilations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::compilation.compilation"
     }
   }
 }
