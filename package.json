@@ -10,7 +10,7 @@
     "strapi": "strapi"
   },
   "engines": {
-    "node": "20.11.1"
+    "node": "20.x"
   },
   "devDependencies": {},
   "dependencies": {
