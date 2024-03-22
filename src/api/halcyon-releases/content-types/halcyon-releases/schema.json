@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "all_halcyon_releases",
+  "info": {
+    "singularName": "halcyon-releases",
+    "pluralName": "all-halcyon-releases",
+    "displayName": "[halcyon] Releases",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "singles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::single.single"
+    },
+    "eps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ep.ep"
+    },
+    "albums": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::album.album"
+    }
+  }
+}

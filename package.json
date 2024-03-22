@@ -9,24 +9,26 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
+  "devDependencies": {},
   "dependencies": {
-    "@strapi-community/strapi-provider-upload-google-cloud-storage": "^4.3.6",
-    "@strapi/plugin-i18n": "4.3.6",
-    "@strapi/plugin-upload": "^4.3.6",
-    "@strapi/plugin-users-permissions": "4.3.6",
-    "@strapi/strapi": "4.3.6",
-    "better-sqlite3": "7.4.6",
-    "pg": "^8.8.0",
-    "pg-connection-string": "^2.5.0"
+    "@strapi/strapi": "4.21.0",
+    "@strapi/plugin-users-permissions": "4.21.0",
+    "@strapi/plugin-i18n": "4.21.0",
+    "@strapi/plugin-cloud": "4.21.0",
+    "better-sqlite3": "8.6.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "styled-components": "5.3.3"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "20b8cc67-c1a7-4a22-9da8-98e48f75f072"
+    "uuid": "2a68c39f-86a1-4575-812d-2602fe2bed6d"
   },
   "engines": {
-    "node": ">=14.19.1 <=16.x.x",
+    "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
