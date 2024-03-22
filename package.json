@@ -9,9 +9,6 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "engines": {
-    "node": "20.x"
-  },
   "devDependencies": {},
   "dependencies": {
     "@strapi/strapi": "4.21.0",
@@ -31,8 +28,8 @@
     "uuid": "2a68c39f-86a1-4575-812d-2602fe2bed6d"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
-    "npm": ">=6.0.0"
+    "node": "20.11.1",
+    "npm": "10.2.4"
   },
   "license": "MIT"
 }
