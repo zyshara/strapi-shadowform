@@ -800,8 +800,8 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    release_information: Attribute.Component<'all.release-information'>;
     name: Attribute.String;
+    release_information: Attribute.Component<'all.release-information'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -863,8 +863,8 @@ export interface ApiCompilationCompilation extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    release_information: Attribute.Component<'all.release-information'>;
     name: Attribute.String;
+    release_information: Attribute.Component<'all.release-information'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
