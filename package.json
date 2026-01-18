@@ -1,36 +1,37 @@
 {
   "name": "strapi-shadowform",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "A Strapi application",
   "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
-    "@strapi-community/strapi-provider-upload-google-cloud-storage": "^4.10.5",
-    "@strapi/plugin-cloud": "4.21.0",
-    "@strapi/plugin-i18n": "4.21.0",
-    "@strapi/plugin-users-permissions": "4.21.0",
-    "@strapi/strapi": "4.21.0",
-    "better-sqlite3": "8.6.0",
-    "pg": "^8.11.3",
+    "@strapi/plugin-cloud": "5.33.3",
+    "@strapi/plugin-users-permissions": "5.33.3",
+    "@strapi/provider-upload-cloudinary": "^5.33.3",
+    "@strapi/strapi": "5.33.3",
+    "better-sqlite3": "12.4.1",
+    "pg": "^8.17.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "5.3.4",
-    "styled-components": "5.3.3"
-  },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "2a68c39f-86a1-4575-812d-2602fe2bed6d"
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
   },
   "engines": {
-    "node": "20.11.1",
-    "npm": "10.2.4"
+    "node": "24.9.0",
+    "npm": "11.6.0"
   },
-  "license": "MIT"
+  "strapi": {
+    "uuid": "3702e1d9-8e43-42a9-8b42-4297017543d0",
+    "installId": "e1eabea9c6ee1148bb0b5ead0c6d7817dbc4eb5f0e4e913565d8c14496f4aec9"
+  }
 }
