@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nail_polish_colors",
+  "info": {
+    "singularName": "nail-polish-color",
+    "pluralName": "nail-polish-colors",
+    "displayName": "Nail Polish Color"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "HexCode": {
+      "type": "string"
+    }
+  }
+}

@@ -467,6 +467,189 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNailPolishBrandNailPolishBrand
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'nail_polish_brands';
+  info: {
+    displayName: 'Nail Polish Brand';
+    pluralName: 'nail-polish-brands';
+    singularName: 'nail-polish-brand';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nail-polish-brand.nail-polish-brand'
+    > &
+      Schema.Attribute.Private;
+    nail_polishes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nail-polish.nail-polish'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNailPolishColorNailPolishColor
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'nail_polish_colors';
+  info: {
+    displayName: 'Nail Polish Color';
+    pluralName: 'nail-polish-colors';
+    singularName: 'nail-polish-color';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    HexCode: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nail-polish-color.nail-polish-color'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNailPolishFinishNailPolishFinish
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'nail_polish_finishes';
+  info: {
+    displayName: 'Nail Polish Finish';
+    pluralName: 'nail-polish-finishes';
+    singularName: 'nail-polish-finish';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Icon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nail-polish-finish.nail-polish-finish'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNailPolishNailPolish extends Struct.CollectionTypeSchema {
+  collectionName: 'nail_polishes';
+  info: {
+    displayName: 'Nail Polish';
+    pluralName: 'nail-polishes';
+    singularName: 'nail-polish';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Avatar: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nail-polish.nail-polish'
+    > &
+      Schema.Attribute.Private;
+    Media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    nail_polish_brand: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::nail-polish-brand.nail-polish-brand'
+    >;
+    nail_polish_colors: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nail-polish-color.nail-polish-color'
+    >;
+    nail_polish_finishes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nail-polish-finish.nail-polish-finish'
+    >;
+    Name: Schema.Attribute.String;
+    polish_pickup: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::polish-pickup.polish-pickup'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    VideoAvatar: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    VideoIcon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface ApiPolishPickupPolishPickup
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'polish_pickups';
+  info: {
+    displayName: 'Polish Pickup';
+    pluralName: 'polish-pickups';
+    singularName: 'polish-pickup';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::polish-pickup.polish-pickup'
+    > &
+      Schema.Attribute.Private;
+    nail_polishes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::nail-polish.nail-polish'
+    >;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -978,6 +1161,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
+      'api::nail-polish-color.nail-polish-color': ApiNailPolishColorNailPolishColor;
+      'api::nail-polish-finish.nail-polish-finish': ApiNailPolishFinishNailPolishFinish;
+      'api::nail-polish.nail-polish': ApiNailPolishNailPolish;
+      'api::polish-pickup.polish-pickup': ApiPolishPickupPolishPickup;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

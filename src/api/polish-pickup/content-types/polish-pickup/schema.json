@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "polish_pickups",
+  "info": {
+    "singularName": "polish-pickup",
+    "pluralName": "polish-pickups",
+    "displayName": "Polish Pickup"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Date": {
+      "type": "date"
+    },
+    "nail_polishes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nail-polish.nail-polish",
+      "mappedBy": "polish_pickup"
+    }
+  }
+}

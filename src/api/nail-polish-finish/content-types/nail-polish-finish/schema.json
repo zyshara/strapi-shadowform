@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nail_polish_finishes",
+  "info": {
+    "singularName": "nail-polish-finish",
+    "pluralName": "nail-polish-finishes",
+    "displayName": "Nail Polish Finish"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Icon": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

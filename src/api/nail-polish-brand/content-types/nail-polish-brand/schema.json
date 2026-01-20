@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nail_polish_brands",
+  "info": {
+    "singularName": "nail-polish-brand",
+    "pluralName": "nail-polish-brands",
+    "displayName": "Nail Polish Brand"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nail_polishes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nail-polish.nail-polish",
+      "mappedBy": "nail_polish_brand"
+    }
+  }
+}
