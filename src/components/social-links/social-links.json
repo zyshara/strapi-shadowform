@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "Platform": {
+    "platform": {
       "type": "enumeration",
       "enum": [
         "EPK",
@@ -15,7 +15,7 @@
         "Linktree"
       ]
     },
-    "URL": {
+    "url": {
       "type": "string"
     }
   },

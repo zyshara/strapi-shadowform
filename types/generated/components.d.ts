@@ -7,10 +7,10 @@ export interface SocialLinksSocialLinks extends Struct.ComponentSchema {
     icon: 'heart';
   };
   attributes: {
-    Platform: Schema.Attribute.Enumeration<
+    platform: Schema.Attribute.Enumeration<
       ['EPK', 'Spotify', 'Website', 'Linktree']
     >;
-    URL: Schema.Attribute.String;
+    url: Schema.Attribute.String;
   };
 }
 

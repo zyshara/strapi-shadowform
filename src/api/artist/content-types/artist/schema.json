@@ -11,15 +11,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "Location": {
+    "location": {
       "type": "string"
     },
-    "Icon": {
+    "icon": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -29,23 +29,23 @@
         "audios"
       ]
     },
-    "PrimaryGenre": {
+    "primary_genre": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::artist.artist"
+      "target": "api::genre.genre"
     },
-    "Genres": {
+    "genres": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::artist.artist"
+      "target": "api::genre.genre"
     },
-    "ShortBiography": {
+    "blurb_biography": {
+      "type": "string"
+    },
+    "biography": {
       "type": "text"
     },
-    "LongBiography": {
-      "type": "text"
-    },
-    "SocialLinks": {
+    "social_links": {
       "type": "component",
       "component": "social-links.social-links",
       "repeatable": true

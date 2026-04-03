@@ -478,26 +478,26 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    biography: Schema.Attribute.Text;
+    blurb_biography: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Genres: Schema.Attribute.Relation<'oneToMany', 'api::artist.artist'>;
-    Icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    genres: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'>;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::artist.artist'
     > &
       Schema.Attribute.Private;
-    Location: Schema.Attribute.String;
-    LongBiography: Schema.Attribute.Text;
-    Name: Schema.Attribute.String &
+    location: Schema.Attribute.String;
+    name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    PrimaryGenre: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
+    primary_genre: Schema.Attribute.Relation<'oneToOne', 'api::genre.genre'>;
     publishedAt: Schema.Attribute.DateTime;
-    ShortBiography: Schema.Attribute.Text;
-    SocialLinks: Schema.Attribute.Component<'social-links.social-links', true>;
+    social_links: Schema.Attribute.Component<'social-links.social-links', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
