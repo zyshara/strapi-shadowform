@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_social_links_social_links",
+  "info": {
+    "displayName": "SocialLinks",
+    "icon": "heart"
+  },
+  "options": {},
+  "attributes": {
+    "Platform": {
+      "type": "enumeration",
+      "enum": [
+        "EPK",
+        "Spotify",
+        "Website",
+        "Linktree"
+      ]
+    },
+    "URL": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

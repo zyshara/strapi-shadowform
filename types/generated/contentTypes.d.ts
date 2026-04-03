@@ -467,6 +467,68 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
+  collectionName: 'artists';
+  info: {
+    displayName: 'Artist';
+    pluralName: 'artists';
+    singularName: 'artist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Genres: Schema.Attribute.Relation<'oneToMany', 'api::artist.artist'>;
+    Icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::artist.artist'
+    > &
+      Schema.Attribute.Private;
+    Location: Schema.Attribute.String;
+    LongBiography: Schema.Attribute.Text;
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    PrimaryGenre: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
+    publishedAt: Schema.Attribute.DateTime;
+    ShortBiography: Schema.Attribute.Text;
+    SocialLinks: Schema.Attribute.Component<'social-links.social-links', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
+  collectionName: 'genres';
+  info: {
+    displayName: 'Genre';
+    pluralName: 'genres';
+    singularName: 'genre';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'> &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNailPolishBrandNailPolishBrand
   extends Struct.CollectionTypeSchema {
   collectionName: 'nail_polish_brands';
@@ -1161,6 +1223,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::artist.artist': ApiArtistArtist;
+      'api::genre.genre': ApiGenreGenre;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
       'api::nail-polish-color.nail-polish-color': ApiNailPolishColorNailPolishColor;
       'api::nail-polish-finish.nail-polish-finish': ApiNailPolishFinishNailPolishFinish;

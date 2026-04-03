@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artists",
+  "info": {
+    "singularName": "artist",
+    "pluralName": "artists",
+    "displayName": "Artist"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Location": {
+      "type": "string"
+    },
+    "Icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "PrimaryGenre": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artist.artist"
+    },
+    "Genres": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artist.artist"
+    },
+    "ShortBiography": {
+      "type": "text"
+    },
+    "LongBiography": {
+      "type": "text"
+    },
+    "SocialLinks": {
+      "type": "component",
+      "component": "social-links.social-links",
+      "repeatable": true
+    }
+  }
+}
