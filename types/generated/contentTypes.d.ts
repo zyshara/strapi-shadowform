@@ -478,6 +478,10 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    artist_statistics: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::artists-statistics.artists-statistics'
+    >;
     biography: Schema.Attribute.Text;
     blurb_biography: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
@@ -501,6 +505,40 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     social_links: Schema.Attribute.Component<'social-links.social-links', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiArtistsStatisticsArtistsStatistics
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'artist_statistics';
+  info: {
+    displayName: 'Artist Statistics';
+    pluralName: 'artist-statistics';
+    singularName: 'artists-statistics';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artist: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    instagram_followers: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::artists-statistics.artists-statistics'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    shows_played: Schema.Attribute.Integer;
+    spotify_monthly_listeners: Schema.Attribute.Integer;
+    total_releases: Schema.Attribute.Integer;
+    upcoming_shows: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1227,6 +1265,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::artist.artist': ApiArtistArtist;
+      'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
       'api::genre.genre': ApiGenreGenre;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
       'api::nail-polish-color.nail-polish-color': ApiNailPolishColorNailPolishColor;

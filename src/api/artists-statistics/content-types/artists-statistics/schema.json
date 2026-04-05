@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artist_statistics",
+  "info": {
+    "singularName": "artists-statistics",
+    "pluralName": "artist-statistics",
+    "displayName": "Artist Statistics"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "artist": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artist.artist",
+      "mappedBy": "artist_statistics"
+    },
+    "spotify_monthly_listeners": {
+      "type": "integer"
+    },
+    "instagram_followers": {
+      "type": "integer"
+    },
+    "shows_played": {
+      "type": "integer"
+    },
+    "upcoming_shows": {
+      "type": "integer"
+    },
+    "total_releases": {
+      "type": "integer"
+    }
+  }
+}

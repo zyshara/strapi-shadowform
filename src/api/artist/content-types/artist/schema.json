@@ -54,6 +54,12 @@
       "type": "component",
       "component": "social-links.social-links",
       "repeatable": true
+    },
+    "artist_statistics": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artists-statistics.artists-statistics",
+      "inversedBy": "artist"
     }
   }
 }
