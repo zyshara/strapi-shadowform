@@ -497,6 +497,9 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     primary_genre: Schema.Attribute.Relation<'oneToOne', 'api::genre.genre'>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     social_links: Schema.Attribute.Component<'social-links.social-links', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
