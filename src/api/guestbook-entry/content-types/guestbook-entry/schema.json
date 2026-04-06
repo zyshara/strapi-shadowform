@@ -39,6 +39,11 @@
     },
     "ip_address": {
       "type": "string"
+    },
+    "guestbook_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::guestbook-tag.guestbook-tag"
     }
   }
 }

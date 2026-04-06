@@ -594,6 +594,10 @@ export interface ApiGuestbookEntryGuestbookEntry
       Schema.Attribute.Private;
     date_posted: Schema.Attribute.Date & Schema.Attribute.Required;
     drawing: Schema.Attribute.Media<'images' | 'files'>;
+    guestbook_tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-tag.guestbook-tag'
+    >;
     ip_address: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
