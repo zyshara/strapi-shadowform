@@ -489,7 +489,7 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     genres: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'>;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    instagram: Schema.Attribute.Relation<'oneToOne', 'api::link.link'>;
+    instagram: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -497,10 +497,7 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
-    management_page_card_links: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::link.link'
-    >;
+    management_page_card_links: Schema.Attribute.Component<'all.link', true>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -510,8 +507,8 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     social_links: Schema.Attribute.Component<'social-links.social-links', true>;
-    songkick: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
-    spotify: Schema.Attribute.Relation<'oneToOne', 'api::link.link'>;
+    songkick: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
+    spotify: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -577,35 +574,6 @@ export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-  };
-}
-
-export interface ApiLinkLink extends Struct.CollectionTypeSchema {
-  collectionName: 'links';
-  info: {
-    displayName: 'Link';
-    pluralName: 'links';
-    singularName: 'link';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    label: Schema.Attribute.Relation<'oneToOne', 'api::text.text'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::link.link'> &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -814,6 +782,36 @@ export interface ApiTextText extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUrlUrl extends Struct.CollectionTypeSchema {
+  collectionName: 'urls';
+  info: {
+    displayName: 'URL';
+    pluralName: 'urls';
+    singularName: 'url';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::url.url'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
   };
 }
 
@@ -1331,13 +1329,13 @@ declare module '@strapi/strapi' {
       'api::artist.artist': ApiArtistArtist;
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
       'api::genre.genre': ApiGenreGenre;
-      'api::link.link': ApiLinkLink;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
       'api::nail-polish-color.nail-polish-color': ApiNailPolishColorNailPolishColor;
       'api::nail-polish-finish.nail-polish-finish': ApiNailPolishFinishNailPolishFinish;
       'api::nail-polish.nail-polish': ApiNailPolishNailPolish;
       'api::polish-pickup.polish-pickup': ApiPolishPickupPolishPickup;
       'api::text.text': ApiTextText;
+      'api::url.url': ApiUrlUrl;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

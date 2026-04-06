@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_all_links",
+  "info": {
+    "displayName": "Link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::text.text"
+    },
+    "url": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::url.url"
+    }
+  },
+  "config": {}
+}

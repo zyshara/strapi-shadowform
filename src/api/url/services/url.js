@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * link service
+ * url service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::link.link');
+module.exports = createCoreService('api::url.url');

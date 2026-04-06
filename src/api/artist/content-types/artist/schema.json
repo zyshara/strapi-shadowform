@@ -61,25 +61,25 @@
       "target": "api::artists-statistics.artists-statistics",
       "inversedBy": "artist"
     },
-    "management_page_card_links": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::link.link"
-    },
     "instagram": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::link.link"
+      "target": "api::url.url"
     },
     "spotify": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::link.link"
+      "target": "api::url.url"
     },
     "songkick": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::artist.artist"
+      "target": "api::url.url"
+    },
+    "management_page_card_links": {
+      "type": "component",
+      "component": "all.link",
+      "repeatable": true
     }
   }
 }

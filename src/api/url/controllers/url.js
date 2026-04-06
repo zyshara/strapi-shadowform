@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * link controller
+ * url controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::link.link');
+module.exports = createCoreController('api::url.url');
