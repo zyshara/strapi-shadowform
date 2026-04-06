@@ -594,9 +594,7 @@ export interface ApiLinkLink extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    label: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    label: Schema.Attribute.Relation<'oneToOne', 'api::text.text'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::link.link'> &
       Schema.Attribute.Private;
@@ -788,6 +786,31 @@ export interface ApiPolishPickupPolishPickup
     >;
     Name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTextText extends Struct.CollectionTypeSchema {
+  collectionName: 'texts';
+  info: {
+    displayName: 'Text';
+    pluralName: 'texts';
+    singularName: 'text';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::text.text'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1314,6 +1337,7 @@ declare module '@strapi/strapi' {
       'api::nail-polish-finish.nail-polish-finish': ApiNailPolishFinishNailPolishFinish;
       'api::nail-polish.nail-polish': ApiNailPolishNailPolish;
       'api::polish-pickup.polish-pickup': ApiPolishPickupPolishPickup;
+      'api::text.text': ApiTextText;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

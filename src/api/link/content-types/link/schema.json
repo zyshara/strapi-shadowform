@@ -17,9 +17,9 @@
       "unique": true
     },
     "label": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::text.text"
     },
     "url": {
       "type": "string",
