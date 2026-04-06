@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guestbook_tags",
+  "info": {
+    "singularName": "guestbook-tag",
+    "pluralName": "guestbook-tags",
+    "displayName": "Guestbook Tag"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

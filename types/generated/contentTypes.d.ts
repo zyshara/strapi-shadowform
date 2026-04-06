@@ -577,6 +577,115 @@ export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGuestbookEntryGuestbookEntry
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'guestbook_entries';
+  info: {
+    displayName: 'Guestbook Entry';
+    pluralName: 'guestbook-entries';
+    singularName: 'guestbook-entry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date_posted: Schema.Attribute.Date & Schema.Attribute.Required;
+    drawing: Schema.Attribute.Media<'images' | 'files'>;
+    ip_address: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-entry.guestbook-entry'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+        minLength: 1;
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+  };
+}
+
+export interface ApiGuestbookTagGuestbookTag
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'guestbook_tags';
+  info: {
+    displayName: 'Guestbook Tag';
+    pluralName: 'guestbook-tags';
+    singularName: 'guestbook-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-tag.guestbook-tag'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGuestbookGuestbook extends Struct.SingleTypeSchema {
+  collectionName: 'guestbooks';
+  info: {
+    displayName: 'Guestbook';
+    pluralName: 'guestbooks';
+    singularName: 'guestbook';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    allowed_guestbook_tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-tag.guestbook-tag'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    guestbook_entries: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-entry.guestbook-entry'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook.guestbook'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNailPolishBrandNailPolishBrand
   extends Struct.CollectionTypeSchema {
   collectionName: 'nail_polish_brands';
@@ -1329,6 +1438,9 @@ declare module '@strapi/strapi' {
       'api::artist.artist': ApiArtistArtist;
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
       'api::genre.genre': ApiGenreGenre;
+      'api::guestbook-entry.guestbook-entry': ApiGuestbookEntryGuestbookEntry;
+      'api::guestbook-tag.guestbook-tag': ApiGuestbookTagGuestbookTag;
+      'api::guestbook.guestbook': ApiGuestbookGuestbook;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
       'api::nail-polish-color.nail-polish-color': ApiNailPolishColorNailPolishColor;
       'api::nail-polish-finish.nail-polish-finish': ApiNailPolishFinishNailPolishFinish;

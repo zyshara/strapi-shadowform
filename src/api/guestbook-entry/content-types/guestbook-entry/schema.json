@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guestbook_entries",
+  "info": {
+    "singularName": "guestbook-entry",
+    "pluralName": "guestbook-entries",
+    "displayName": "Guestbook Entry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "required": true,
+      "unique": true
+    },
+    "message": {
+      "type": "text"
+    },
+    "drawing": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "date_posted": {
+      "type": "date",
+      "required": true
+    },
+    "website": {
+      "type": "string",
+      "regex": "(https?:\\/\\/)?(www\\.)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(\\/\\S*)?"
+    },
+    "ip_address": {
+      "type": "string"
+    }
+  }
+}
