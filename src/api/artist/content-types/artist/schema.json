@@ -24,16 +24,6 @@
     "location": {
       "type": "string"
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "primary_genre": {
       "type": "relation",
       "relation": "oneToOne",
@@ -43,6 +33,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::genre.genre"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "blurb_biography": {
       "type": "string"
@@ -60,6 +60,26 @@
       "relation": "oneToOne",
       "target": "api::artists-statistics.artists-statistics",
       "inversedBy": "artist"
+    },
+    "management_page_card_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::link.link"
+    },
+    "instagram": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::link.link"
+    },
+    "spotify": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::link.link"
+    },
+    "songkick": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artist.artist"
     }
   }
 }

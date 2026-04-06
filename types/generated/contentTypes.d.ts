@@ -489,6 +489,7 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     genres: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'>;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    instagram: Schema.Attribute.Relation<'oneToOne', 'api::link.link'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -496,6 +497,10 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
+    management_page_card_links: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::link.link'
+    >;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -505,6 +510,8 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     social_links: Schema.Attribute.Component<'social-links.social-links', true>;
+    songkick: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
+    spotify: Schema.Attribute.Relation<'oneToOne', 'api::link.link'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -534,6 +541,9 @@ export interface ApiArtistsStatisticsArtistsStatistics
       'api::artists-statistics.artists-statistics'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     shows_played: Schema.Attribute.Integer;
     spotify_monthly_listeners: Schema.Attribute.Integer;
@@ -567,6 +577,37 @@ export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLinkLink extends Struct.CollectionTypeSchema {
+  collectionName: 'links';
+  info: {
+    displayName: 'Link';
+    pluralName: 'links';
+    singularName: 'link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::link.link'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -1267,6 +1308,7 @@ declare module '@strapi/strapi' {
       'api::artist.artist': ApiArtistArtist;
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
       'api::genre.genre': ApiGenreGenre;
+      'api::link.link': ApiLinkLink;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
       'api::nail-polish-color.nail-polish-color': ApiNailPolishColorNailPolishColor;
       'api::nail-polish-finish.nail-polish-finish': ApiNailPolishFinishNailPolishFinish;
