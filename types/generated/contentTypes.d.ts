@@ -592,7 +592,7 @@ export interface ApiGuestbookEntryGuestbookEntry
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date_posted: Schema.Attribute.Date & Schema.Attribute.Required;
+    date_posted: Schema.Attribute.DateTime & Schema.Attribute.Required;
     drawing: Schema.Attribute.Media<'images' | 'files'>;
     guestbook_tags: Schema.Attribute.Relation<
       'oneToMany',
