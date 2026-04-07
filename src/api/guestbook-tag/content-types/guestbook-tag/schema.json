@@ -15,6 +15,13 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "fire-glitch",
+        "rainbow-party"
+      ]
     }
   }
 }

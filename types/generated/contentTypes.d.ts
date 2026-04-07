@@ -645,6 +645,7 @@ export interface ApiGuestbookTagGuestbookTag
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    theme: Schema.Attribute.Enumeration<['fire-glitch', 'rainbow-party']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
