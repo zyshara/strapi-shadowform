@@ -608,7 +608,6 @@ export interface ApiGuestbookEntryGuestbookEntry
     message: Schema.Attribute.Text;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 100;
         minLength: 1;

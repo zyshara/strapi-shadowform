@@ -16,7 +16,7 @@
       "minLength": 1,
       "maxLength": 100,
       "required": true,
-      "unique": true
+      "unique": false
     },
     "message": {
       "type": "text"
