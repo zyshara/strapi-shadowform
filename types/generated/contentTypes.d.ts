@@ -690,6 +690,37 @@ export interface ApiGuestbookGuestbook extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiLinktreeLinktree extends Struct.CollectionTypeSchema {
+  collectionName: 'linktrees';
+  info: {
+    displayName: 'Linktree';
+    pluralName: 'linktrees';
+    singularName: 'linktree';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    links: Schema.Attribute.DynamicZone<['all.link', 'all.link-w-image']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::linktree.linktree'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNailPolishBrandNailPolishBrand
   extends Struct.CollectionTypeSchema {
   collectionName: 'nail_polish_brands';
@@ -1445,6 +1476,7 @@ declare module '@strapi/strapi' {
       'api::guestbook-entry.guestbook-entry': ApiGuestbookEntryGuestbookEntry;
       'api::guestbook-tag.guestbook-tag': ApiGuestbookTagGuestbookTag;
       'api::guestbook.guestbook': ApiGuestbookGuestbook;
+      'api::linktree.linktree': ApiLinktreeLinktree;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
       'api::nail-polish-color.nail-polish-color': ApiNailPolishColorNailPolishColor;
       'api::nail-polish-finish.nail-polish-finish': ApiNailPolishFinishNailPolishFinish;

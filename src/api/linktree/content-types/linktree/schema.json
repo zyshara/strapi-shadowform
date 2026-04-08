@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "linktrees",
+  "info": {
+    "singularName": "linktree",
+    "pluralName": "linktrees",
+    "displayName": "Linktree"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "links": {
+      "type": "dynamiczone",
+      "components": [
+        "all.link",
+        "all.link-w-image"
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_all_link_w_images",
+  "info": {
+    "displayName": "Link with Image",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::text.text"
+    },
+    "url": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::url.url"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}
