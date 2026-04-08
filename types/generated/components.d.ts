@@ -75,7 +75,7 @@ export interface ShadowformArtistCard extends Struct.ComponentSchema {
   };
   attributes: {
     artist: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
-    Links: Schema.Attribute.Component<'shared.link-v2', true>;
+    links: Schema.Attribute.Component<'shared.link-v2', true>;
   };
 }
 
