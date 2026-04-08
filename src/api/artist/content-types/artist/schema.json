@@ -80,6 +80,11 @@
       "type": "component",
       "component": "all.link",
       "repeatable": true
+    },
+    "featured_tracks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::url.url"
     }
   }
 }

@@ -487,6 +487,7 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    featured_tracks: Schema.Attribute.Relation<'oneToMany', 'api::url.url'>;
     genres: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'>;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     instagram: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
