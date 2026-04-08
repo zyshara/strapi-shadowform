@@ -25,6 +25,72 @@ export interface AllLinkWImage extends Struct.ComponentSchema {
   };
 }
 
+export interface EpkPageComponentsFeaturedTracks
+  extends Struct.ComponentSchema {
+  collectionName: 'components_epk_page_components_featured_tracks';
+  info: {
+    displayName: 'Featured Tracks';
+    icon: 'headphone';
+  };
+  attributes: {
+    file: Schema.Attribute.Media<'files' | 'audios'>;
+    label: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    year: Schema.Attribute.Integer;
+  };
+}
+
+export interface EpkPageComponentsPhotosAndMedia
+  extends Struct.ComponentSchema {
+  collectionName: 'components_epk_page_components_photos_and_medias';
+  info: {
+    displayName: 'Photos & Media';
+    icon: 'picture';
+  };
+  attributes: {
+    file: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+    thumbnail: Schema.Attribute.Media<'images'>;
+  };
+}
+
+export interface EpkPageComponentsPress extends Struct.ComponentSchema {
+  collectionName: 'components_epk_page_components_presses';
+  info: {
+    displayName: 'Press';
+    icon: 'layout';
+  };
+  attributes: {
+    caption: Schema.Attribute.Text;
+    source: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ShadowformArtistCard extends Struct.ComponentSchema {
+  collectionName: 'components_shadowform_artist_cards';
+  info: {
+    displayName: 'Artist Card';
+  };
+  attributes: {
+    artist: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
+    links: Schema.Attribute.Component<'all.link', true>;
+  };
+}
+
+export interface ShadowformHeader extends Struct.ComponentSchema {
+  collectionName: 'components_shadowform_headers';
+  info: {
+    displayName: 'Header';
+    icon: 'heart';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks;
+    eyebrow: Schema.Attribute.String;
+    heading: Schema.Attribute.String;
+  };
+}
+
 export interface SocialLinksSocialLinks extends Struct.ComponentSchema {
   collectionName: 'components_social_links_social_links';
   info: {
@@ -44,6 +110,11 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'all.link': AllLink;
       'all.link-w-image': AllLinkWImage;
+      'epk-page-components.featured-tracks': EpkPageComponentsFeaturedTracks;
+      'epk-page-components.photos-and-media': EpkPageComponentsPhotosAndMedia;
+      'epk-page-components.press': EpkPageComponentsPress;
+      'shadowform.artist-card': ShadowformArtistCard;
+      'shadowform.header': ShadowformHeader;
       'social-links.social-links': SocialLinksSocialLinks;
     }
   }

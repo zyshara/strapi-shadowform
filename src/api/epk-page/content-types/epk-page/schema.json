@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "epk_pages",
+  "info": {
+    "singularName": "epk-page",
+    "pluralName": "epk-pages",
+    "displayName": "EPK Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "artist": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artist.artist"
+    },
+    "featured_tracks": {
+      "type": "component",
+      "component": "epk-page-components.featured-tracks",
+      "repeatable": true
+    },
+    "photos_and_media": {
+      "type": "component",
+      "component": "epk-page-components.photos-and-media",
+      "repeatable": true
+    },
+    "press": {
+      "type": "component",
+      "component": "epk-page-components.press",
+      "repeatable": true
+    },
+    "links": {
+      "type": "component",
+      "component": "all.link",
+      "repeatable": true
+    }
+  }
+}

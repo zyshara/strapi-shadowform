@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shadowform_artist_cards",
+  "info": {
+    "displayName": "Artist Card"
+  },
+  "options": {},
+  "attributes": {
+    "artist": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artist.artist"
+    },
+    "links": {
+      "type": "component",
+      "component": "all.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

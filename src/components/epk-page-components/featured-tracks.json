@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_epk_page_components_featured_tracks",
+  "info": {
+    "displayName": "Featured Tracks",
+    "icon": "headphone"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

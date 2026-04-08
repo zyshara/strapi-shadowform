@@ -555,6 +555,44 @@ export interface ApiArtistsStatisticsArtistsStatistics
   };
 }
 
+export interface ApiEpkPageEpkPage extends Struct.CollectionTypeSchema {
+  collectionName: 'epk_pages';
+  info: {
+    displayName: 'EPK Page';
+    pluralName: 'epk-pages';
+    singularName: 'epk-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artist: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    featured_tracks: Schema.Attribute.Component<
+      'epk-page-components.featured-tracks',
+      true
+    >;
+    links: Schema.Attribute.Component<'all.link', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::epk-page.epk-page'
+    > &
+      Schema.Attribute.Private;
+    photos_and_media: Schema.Attribute.Component<
+      'epk-page-components.photos-and-media',
+      true
+    >;
+    press: Schema.Attribute.Component<'epk-page-components.press', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
   collectionName: 'genres';
   info: {
@@ -717,6 +755,36 @@ export interface ApiLinktreeLinktree extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiManagementPageManagementPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'management_pages';
+  info: {
+    displayName: 'Management Page';
+    pluralName: 'management-pages';
+    singularName: 'management-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artists: Schema.Attribute.Component<'shadowform.artist-card', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    header: Schema.Attribute.Component<'shadowform.header', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::management-page.management-page'
+    > &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1475,11 +1543,13 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::artist.artist': ApiArtistArtist;
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
+      'api::epk-page.epk-page': ApiEpkPageEpkPage;
       'api::genre.genre': ApiGenreGenre;
       'api::guestbook-entry.guestbook-entry': ApiGuestbookEntryGuestbookEntry;
       'api::guestbook-tag.guestbook-tag': ApiGuestbookTagGuestbookTag;
       'api::guestbook.guestbook': ApiGuestbookGuestbook;
       'api::linktree.linktree': ApiLinktreeLinktree;
+      'api::management-page.management-page': ApiManagementPageManagementPage;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
       'api::nail-polish-color.nail-polish-color': ApiNailPolishColorNailPolishColor;
       'api::nail-polish-finish.nail-polish-finish': ApiNailPolishFinishNailPolishFinish;
