@@ -509,7 +509,6 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    social_links: Schema.Attribute.Component<'social-links.social-links', true>;
     songkick: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
     spotify: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
     updatedAt: Schema.Attribute.DateTime;

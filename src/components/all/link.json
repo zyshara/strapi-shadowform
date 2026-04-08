@@ -5,6 +5,9 @@
   },
   "options": {},
   "attributes": {
+    "name": {
+      "type": "string"
+    },
     "label": {
       "type": "relation",
       "relation": "oneToOne",

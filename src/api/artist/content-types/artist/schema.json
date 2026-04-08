@@ -50,11 +50,6 @@
     "biography": {
       "type": "text"
     },
-    "social_links": {
-      "type": "component",
-      "component": "social-links.social-links",
-      "repeatable": true
-    },
     "artist_statistics": {
       "type": "relation",
       "relation": "oneToOne",

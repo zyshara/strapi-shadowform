@@ -7,6 +7,7 @@ export interface AllLink extends Struct.ComponentSchema {
   };
   attributes: {
     label: Schema.Attribute.Relation<'oneToOne', 'api::text.text'>;
+    name: Schema.Attribute.String;
     url: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
   };
 }
@@ -91,20 +92,6 @@ export interface ShadowformHeader extends Struct.ComponentSchema {
   };
 }
 
-export interface SocialLinksSocialLinks extends Struct.ComponentSchema {
-  collectionName: 'components_social_links_social_links';
-  info: {
-    displayName: 'SocialLinks';
-    icon: 'heart';
-  };
-  attributes: {
-    platform: Schema.Attribute.Enumeration<
-      ['EPK', 'Spotify', 'Website', 'Linktree']
-    >;
-    url: Schema.Attribute.String;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -115,7 +102,6 @@ declare module '@strapi/strapi' {
       'epk-page-components.press': EpkPageComponentsPress;
       'shadowform.artist-card': ShadowformArtistCard;
       'shadowform.header': ShadowformHeader;
-      'social-links.social-links': SocialLinksSocialLinks;
     }
   }
 }
