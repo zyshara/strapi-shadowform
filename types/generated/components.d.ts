@@ -75,7 +75,7 @@ export interface ShadowformArtistCard extends Struct.ComponentSchema {
   };
   attributes: {
     artist: Schema.Attribute.Relation<'oneToOne', 'api::artist.artist'>;
-    links: Schema.Attribute.Component<'all.link', true>;
+    Links: Schema.Attribute.Component<'shared.link-v2', true>;
   };
 }
 
@@ -92,6 +92,18 @@ export interface ShadowformHeader extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedLinkV2 extends Struct.ComponentSchema {
+  collectionName: 'components_shared_link_v2s';
+  info: {
+    displayName: 'Link v2';
+    icon: 'link';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -102,6 +114,7 @@ declare module '@strapi/strapi' {
       'epk-page-components.press': EpkPageComponentsPress;
       'shadowform.artist-card': ShadowformArtistCard;
       'shadowform.header': ShadowformHeader;
+      'shared.link-v2': SharedLinkV2;
     }
   }
 }

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_link_v2s",
+  "info": {
+    "displayName": "Link v2",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::url.url"
+    }
+  },
+  "config": {}
+}

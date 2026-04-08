@@ -10,9 +10,9 @@
       "relation": "oneToOne",
       "target": "api::artist.artist"
     },
-    "links": {
+    "Links": {
       "type": "component",
-      "component": "all.link",
+      "component": "shared.link-v2",
       "repeatable": true
     }
   },
