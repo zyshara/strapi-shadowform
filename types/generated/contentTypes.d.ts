@@ -484,6 +484,7 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     >;
     biography: Schema.Attribute.Text;
     blurb_biography: Schema.Attribute.String;
+    booking_email: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -498,6 +499,7 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
+    management_email: Schema.Attribute.String;
     management_page_card_links: Schema.Attribute.Component<'all.link', true>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &

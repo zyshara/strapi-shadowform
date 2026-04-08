@@ -85,6 +85,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::url.url"
+    },
+    "booking_email": {
+      "type": "string"
+    },
+    "management_email": {
+      "type": "string"
     }
   }
 }
