@@ -488,7 +488,6 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    featured_tracks: Schema.Attribute.Relation<'oneToMany', 'api::url.url'>;
     genres: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'>;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     instagram: Schema.Attribute.Relation<'oneToOne', 'api::url.url'>;
@@ -500,7 +499,6 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
     management_email: Schema.Attribute.String;
-    management_page_card_links: Schema.Attribute.Component<'all.link', true>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -573,7 +571,7 @@ export interface ApiEpkPageEpkPage extends Struct.CollectionTypeSchema {
       'epk-page-components.featured-tracks',
       true
     >;
-    links: Schema.Attribute.Component<'all.link', true>;
+    links: Schema.Attribute.Component<'shared.link-v2', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -744,7 +742,6 @@ export interface ApiLinktreeLinktree extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    links: Schema.Attribute.DynamicZone<['all.link', 'all.link-w-image']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

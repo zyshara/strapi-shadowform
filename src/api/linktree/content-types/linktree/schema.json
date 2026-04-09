@@ -15,13 +15,6 @@
       "type": "string",
       "required": true,
       "unique": true
-    },
-    "links": {
-      "type": "dynamiczone",
-      "components": [
-        "all.link",
-        "all.link-w-image"
-      ]
     }
   }
 }

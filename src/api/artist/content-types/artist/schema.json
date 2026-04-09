@@ -71,16 +71,6 @@
       "relation": "oneToOne",
       "target": "api::url.url"
     },
-    "management_page_card_links": {
-      "type": "component",
-      "component": "all.link",
-      "repeatable": true
-    },
-    "featured_tracks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::url.url"
-    },
     "booking_email": {
       "type": "string"
     },

@@ -22,6 +22,13 @@
         "files",
         "audios"
       ]
+    },
+    "download": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
     }
   },
   "config": {}
