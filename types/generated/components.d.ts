@@ -34,7 +34,7 @@ export interface EpkPageComponentsFeaturedTracks
     icon: 'headphone';
   };
   attributes: {
-    download: Schema.Attribute.Media<'files'>;
+    download: Schema.Attribute.String;
     file: Schema.Attribute.Media<'files' | 'audios'>;
     label: Schema.Attribute.String;
     name: Schema.Attribute.String;

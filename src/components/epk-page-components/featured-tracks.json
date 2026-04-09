@@ -24,11 +24,7 @@
       ]
     },
     "download": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "files"
-      ]
+      "type": "string"
     }
   },
   "config": {}
