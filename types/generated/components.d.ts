@@ -50,9 +50,9 @@ export interface EpkPageComponentsPhotosAndMedia
     icon: 'picture';
   };
   attributes: {
-    file: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     name: Schema.Attribute.String;
     thumbnail: Schema.Attribute.Media<'images'>;
+    url: Schema.Attribute.String;
   };
 }
 
