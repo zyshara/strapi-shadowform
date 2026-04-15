@@ -15,6 +15,16 @@
       "type": "component",
       "component": "shadowform.header",
       "repeatable": false
+    },
+    "projects": {
+      "type": "component",
+      "component": "shadowform.engineering-projects",
+      "repeatable": true
+    },
+    "archive": {
+      "type": "component",
+      "component": "shadowform.engineering-projects",
+      "repeatable": true
     }
   }
 }

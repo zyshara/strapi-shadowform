@@ -564,6 +564,10 @@ export interface ApiEngineeringPageEngineeringPage
     draftAndPublish: true;
   };
   attributes: {
+    archive: Schema.Attribute.Component<
+      'shadowform.engineering-projects',
+      true
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -574,6 +578,10 @@ export interface ApiEngineeringPageEngineeringPage
       'api::engineering-page.engineering-page'
     > &
       Schema.Attribute.Private;
+    projects: Schema.Attribute.Component<
+      'shadowform.engineering-projects',
+      true
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

@@ -80,6 +80,30 @@ export interface ShadowformArtistCard extends Struct.ComponentSchema {
   };
 }
 
+export interface ShadowformEngineeringProjects extends Struct.ComponentSchema {
+  collectionName: 'components_shadowform_engineering_projects';
+  info: {
+    displayName: 'Engineering Projects';
+    icon: 'cursor';
+  };
+  attributes: {
+    badge: Schema.Attribute.Media<'images'>;
+    bottom_tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-tag.guestbook-tag'
+    >;
+    header: Schema.Attribute.Component<'shadowform.header', true>;
+    slug: Schema.Attribute.String;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    top_tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-tag.guestbook-tag'
+    >;
+    url: Schema.Attribute.String;
+    year: Schema.Attribute.String;
+  };
+}
+
 export interface ShadowformHeader extends Struct.ComponentSchema {
   collectionName: 'components_shadowform_headers';
   info: {
@@ -114,6 +138,7 @@ declare module '@strapi/strapi' {
       'epk-page-components.photos-and-media': EpkPageComponentsPhotosAndMedia;
       'epk-page-components.press': EpkPageComponentsPress;
       'shadowform.artist-card': ShadowformArtistCard;
+      'shadowform.engineering-projects': ShadowformEngineeringProjects;
       'shadowform.header': ShadowformHeader;
       'shared.link-v2': SharedLinkV2;
     }

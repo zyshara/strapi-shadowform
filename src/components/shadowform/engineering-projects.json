@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_shadowform_engineering_projects",
+  "info": {
+    "displayName": "Engineering Projects",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "component",
+      "component": "shadowform.header",
+      "repeatable": true
+    },
+    "slug": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "badge": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "top_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::guestbook-tag.guestbook-tag"
+    },
+    "bottom_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::guestbook-tag.guestbook-tag"
+    }
+  },
+  "config": {}
+}
