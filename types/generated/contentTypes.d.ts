@@ -552,6 +552,35 @@ export interface ApiArtistsStatisticsArtistsStatistics
   };
 }
 
+export interface ApiEngineeringPageEngineeringPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'engineering_pages';
+  info: {
+    displayName: 'Engineering Page';
+    pluralName: 'engineering-pages';
+    singularName: 'engineering-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    header: Schema.Attribute.Component<'shadowform.header', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::engineering-page.engineering-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEpkPageEpkPage extends Struct.CollectionTypeSchema {
   collectionName: 'epk_pages';
   info: {
@@ -1539,6 +1568,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::artist.artist': ApiArtistArtist;
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
+      'api::engineering-page.engineering-page': ApiEngineeringPageEngineeringPage;
       'api::epk-page.epk-page': ApiEpkPageEpkPage;
       'api::genre.genre': ApiGenreGenre;
       'api::guestbook-entry.guestbook-entry': ApiGuestbookEntryGuestbookEntry;
