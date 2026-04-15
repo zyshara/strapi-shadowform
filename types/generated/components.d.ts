@@ -92,7 +92,7 @@ export interface ShadowformEngineeringProjects extends Struct.ComponentSchema {
       'oneToMany',
       'api::guestbook-tag.guestbook-tag'
     >;
-    header: Schema.Attribute.Component<'shadowform.header', true>;
+    header: Schema.Attribute.Component<'shadowform.header', false>;
     slug: Schema.Attribute.String;
     thumbnail: Schema.Attribute.Media<'images'>;
     top_tags: Schema.Attribute.Relation<

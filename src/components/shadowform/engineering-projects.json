@@ -9,7 +9,7 @@
     "header": {
       "type": "component",
       "component": "shadowform.header",
-      "repeatable": true
+      "repeatable": false
     },
     "slug": {
       "type": "string"

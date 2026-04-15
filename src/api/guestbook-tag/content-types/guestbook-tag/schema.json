@@ -20,7 +20,8 @@
       "type": "enumeration",
       "enum": [
         "fire-glitch",
-        "rainbow-party"
+        "rainbow-party",
+        "blizzard"
       ]
     }
   }
