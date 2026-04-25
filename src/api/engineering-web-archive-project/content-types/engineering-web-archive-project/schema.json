@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "engineering_web_archive_projects",
+  "info": {
+    "singularName": "engineering-web-archive-project",
+    "pluralName": "engineering-web-archive-projects",
+    "displayName": "Engineering Web Archive Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Header": {
+      "type": "component",
+      "component": "shadowform.header",
+      "repeatable": false
+    },
+    "top_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::guestbook-tag.guestbook-tag"
+    },
+    "bottom_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::guestbook-tag.guestbook-tag"
+    },
+    "year": {
+      "type": "string"
+    }
+  }
+}

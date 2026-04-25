@@ -589,6 +589,44 @@ export interface ApiEngineeringPageEngineeringPage
   };
 }
 
+export interface ApiEngineeringWebArchiveProjectEngineeringWebArchiveProject
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'engineering_web_archive_projects';
+  info: {
+    displayName: 'Engineering Web Archive Project';
+    pluralName: 'engineering-web-archive-projects';
+    singularName: 'engineering-web-archive-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bottom_tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-tag.guestbook-tag'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Header: Schema.Attribute.Component<'shadowform.header', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::engineering-web-archive-project.engineering-web-archive-project'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    top_tags: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::guestbook-tag.guestbook-tag'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.String;
+  };
+}
+
 export interface ApiEpkPageEpkPage extends Struct.CollectionTypeSchema {
   collectionName: 'epk_pages';
   info: {
@@ -1579,6 +1617,7 @@ declare module '@strapi/strapi' {
       'api::artist.artist': ApiArtistArtist;
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
       'api::engineering-page.engineering-page': ApiEngineeringPageEngineeringPage;
+      'api::engineering-web-archive-project.engineering-web-archive-project': ApiEngineeringWebArchiveProjectEngineeringWebArchiveProject;
       'api::epk-page.epk-page': ApiEpkPageEpkPage;
       'api::genre.genre': ApiGenreGenre;
       'api::guestbook-entry.guestbook-entry': ApiGuestbookEntryGuestbookEntry;
