@@ -616,6 +616,7 @@ export interface ApiEngineeringWebArchiveProjectEngineeringWebArchiveProject
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String;
     top_tags: Schema.Attribute.Relation<
       'oneToMany',
       'api::guestbook-tag.guestbook-tag'
