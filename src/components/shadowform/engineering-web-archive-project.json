@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shadowform_engineering_web_archive_projects",
+  "info": {
+    "displayName": "Engineering Web Archive Project",
+    "icon": "earth"
+  },
+  "options": {},
+  "attributes": {
+    "card": {
+      "type": "component",
+      "component": "shadowform.engineering-projects",
+      "repeatable": false
+    },
+    "engineering_web_archive_project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::engineering-web-archive-project.engineering-web-archive-project"
+    }
+  },
+  "config": {}
+}

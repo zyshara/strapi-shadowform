@@ -25,6 +25,12 @@
       "type": "component",
       "component": "shadowform.engineering-projects",
       "repeatable": true
+    },
+    "archive_v2": {
+      "type": "dynamiczone",
+      "components": [
+        "shadowform.engineering-web-archive-project"
+      ]
     }
   }
 }

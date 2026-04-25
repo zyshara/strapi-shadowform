@@ -104,6 +104,22 @@ export interface ShadowformEngineeringProjects extends Struct.ComponentSchema {
   };
 }
 
+export interface ShadowformEngineeringWebArchiveProject
+  extends Struct.ComponentSchema {
+  collectionName: 'components_shadowform_engineering_web_archive_projects';
+  info: {
+    displayName: 'Engineering Web Archive Project';
+    icon: 'earth';
+  };
+  attributes: {
+    card: Schema.Attribute.Component<'shadowform.engineering-projects', false>;
+    engineering_web_archive_project: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::engineering-web-archive-project.engineering-web-archive-project'
+    >;
+  };
+}
+
 export interface ShadowformHeader extends Struct.ComponentSchema {
   collectionName: 'components_shadowform_headers';
   info: {
@@ -139,6 +155,7 @@ declare module '@strapi/strapi' {
       'epk-page-components.press': EpkPageComponentsPress;
       'shadowform.artist-card': ShadowformArtistCard;
       'shadowform.engineering-projects': ShadowformEngineeringProjects;
+      'shadowform.engineering-web-archive-project': ShadowformEngineeringWebArchiveProject;
       'shadowform.header': ShadowformHeader;
       'shared.link-v2': SharedLinkV2;
     }

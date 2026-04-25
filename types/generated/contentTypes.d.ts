@@ -568,6 +568,9 @@ export interface ApiEngineeringPageEngineeringPage
       'shadowform.engineering-projects',
       true
     >;
+    archive_v2: Schema.Attribute.DynamicZone<
+      ['shadowform.engineering-web-archive-project']
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
