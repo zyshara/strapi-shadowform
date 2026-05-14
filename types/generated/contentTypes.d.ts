@@ -1107,6 +1107,69 @@ export interface ApiUrlUrl extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiWeddingGuestProfileWeddingGuestProfile
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'wedding_guest_profiles';
+  info: {
+    displayName: 'WeddingGuestProfile';
+    pluralName: 'wedding-guest-profiles';
+    singularName: 'wedding-guest-profile';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    display_name: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wedding-guest-profile.wedding-guest-profile'
+    > &
+      Schema.Attribute.Private;
+    profile_picture: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWeddingInviteTokenWeddingInviteToken
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'wedding_invite_tokens';
+  info: {
+    displayName: 'WeddingInviteToken';
+    pluralName: 'wedding-invite-tokens';
+    singularName: 'wedding-invite-token';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    consumed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    guest_name: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wedding-invite-token.wedding-invite-token'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    token: Schema.Attribute.UID;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1636,6 +1699,8 @@ declare module '@strapi/strapi' {
       'api::polish-pickup.polish-pickup': ApiPolishPickupPolishPickup;
       'api::text.text': ApiTextText;
       'api::url.url': ApiUrlUrl;
+      'api::wedding-guest-profile.wedding-guest-profile': ApiWeddingGuestProfileWeddingGuestProfile;
+      'api::wedding-invite-token.wedding-invite-token': ApiWeddingInviteTokenWeddingInviteToken;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

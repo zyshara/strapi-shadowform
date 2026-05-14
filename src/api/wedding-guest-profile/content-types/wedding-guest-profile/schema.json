@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wedding_guest_profiles",
+  "info": {
+    "singularName": "wedding-guest-profile",
+    "pluralName": "wedding-guest-profiles",
+    "displayName": "WeddingGuestProfile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "display_name": {
+      "type": "string"
+    },
+    "profile_picture": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
