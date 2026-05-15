@@ -1144,6 +1144,10 @@ export interface ApiWeddingGuestProfileWeddingGuestProfile
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    wedding_invite_token: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::wedding-invite-token.wedding-invite-token'
+    >;
     wedding_rsvp: Schema.Attribute.Relation<
       'oneToOne',
       'api::wedding-rsvp.wedding-rsvp'
@@ -1179,6 +1183,10 @@ export interface ApiWeddingInviteTokenWeddingInviteToken
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    wedding_guest_profile: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::wedding-guest-profile.wedding-guest-profile'
+    >;
   };
 }
 

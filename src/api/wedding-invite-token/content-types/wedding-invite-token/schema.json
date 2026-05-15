@@ -20,6 +20,12 @@
     },
     "guest_name": {
       "type": "string"
+    },
+    "wedding_guest_profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wedding-guest-profile.wedding-guest-profile",
+      "mappedBy": "wedding_invite_token"
     }
   }
 }
