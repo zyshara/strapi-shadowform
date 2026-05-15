@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wedding_dietary_restrictions",
+  "info": {
+    "singularName": "wedding-dietary-restriction",
+    "pluralName": "wedding-dietary-restrictions",
+    "displayName": "WeddingDietaryRestriction"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

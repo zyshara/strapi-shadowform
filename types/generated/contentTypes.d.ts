@@ -1107,6 +1107,36 @@ export interface ApiUrlUrl extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiWeddingDietaryRestrictionWeddingDietaryRestriction
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'wedding_dietary_restrictions';
+  info: {
+    displayName: 'WeddingDietaryRestriction';
+    pluralName: 'wedding-dietary-restrictions';
+    singularName: 'wedding-dietary-restriction';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wedding-dietary-restriction.wedding-dietary-restriction'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiWeddingGuestProfileWeddingGuestProfile
   extends Struct.CollectionTypeSchema {
   collectionName: 'wedding_guest_profiles';
@@ -1234,6 +1264,11 @@ export interface ApiWeddingRsvpWeddingRsvp extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dietary_restriction_notes: Schema.Attribute.Text;
+    dietary_restrictions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wedding-dietary-restriction.wedding-dietary-restriction'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1241,6 +1276,11 @@ export interface ApiWeddingRsvpWeddingRsvp extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     plus_one_address: Schema.Attribute.String;
+    plus_one_dietary_restriction_notes: Schema.Attribute.Text;
+    plus_one_dietary_restrictions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wedding-dietary-restriction.wedding-dietary-restriction'
+    >;
     plus_one_name: Schema.Attribute.String;
     plus_one_phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
@@ -1786,6 +1826,7 @@ declare module '@strapi/strapi' {
       'api::polish-pickup.polish-pickup': ApiPolishPickupPolishPickup;
       'api::text.text': ApiTextText;
       'api::url.url': ApiUrlUrl;
+      'api::wedding-dietary-restriction.wedding-dietary-restriction': ApiWeddingDietaryRestrictionWeddingDietaryRestriction;
       'api::wedding-guest-profile.wedding-guest-profile': ApiWeddingGuestProfileWeddingGuestProfile;
       'api::wedding-invite-token.wedding-invite-token': ApiWeddingInviteTokenWeddingInviteToken;
       'api::wedding-quest-log.wedding-quest-log': ApiWeddingQuestLogWeddingQuestLog;

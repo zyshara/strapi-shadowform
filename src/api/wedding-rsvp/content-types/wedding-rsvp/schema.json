@@ -31,6 +31,22 @@
     },
     "attending_reception": {
       "type": "boolean"
+    },
+    "dietary_restrictions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wedding-dietary-restriction.wedding-dietary-restriction"
+    },
+    "dietary_restriction_notes": {
+      "type": "text"
+    },
+    "plus_one_dietary_restrictions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wedding-dietary-restriction.wedding-dietary-restriction"
+    },
+    "plus_one_dietary_restriction_notes": {
+      "type": "text"
     }
   }
 }
