@@ -12,7 +12,8 @@
   "pluginOptions": {},
   "attributes": {
     "display_name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "profile_picture": {
       "type": "media",
@@ -31,16 +32,20 @@
       "inversedBy": "wedding_guest_profile"
     },
     "address": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "phone_number": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "plus_one_allowed": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true
     },
     "allowed_at_ceremony": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true
     },
     "wedding_rsvp": {
       "type": "relation",
@@ -53,6 +58,10 @@
       "relation": "oneToOne",
       "target": "api::wedding-invite-token.wedding-invite-token",
       "inversedBy": "wedding_guest_profile"
+    },
+    "can_change_rsvp_until": {
+      "type": "date",
+      "required": true
     }
   }
 }

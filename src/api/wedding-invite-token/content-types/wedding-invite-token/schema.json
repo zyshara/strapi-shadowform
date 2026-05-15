@@ -18,9 +18,6 @@
       "type": "boolean",
       "default": false
     },
-    "guest_name": {
-      "type": "string"
-    },
     "wedding_guest_profile": {
       "type": "relation",
       "relation": "oneToOne",

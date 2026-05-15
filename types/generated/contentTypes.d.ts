@@ -1119,20 +1119,21 @@ export interface ApiWeddingGuestProfileWeddingGuestProfile
     draftAndPublish: true;
   };
   attributes: {
-    address: Schema.Attribute.String;
-    allowed_at_ceremony: Schema.Attribute.Boolean;
+    address: Schema.Attribute.String & Schema.Attribute.Required;
+    allowed_at_ceremony: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    can_change_rsvp_until: Schema.Attribute.Date & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    display_name: Schema.Attribute.String;
+    display_name: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::wedding-guest-profile.wedding-guest-profile'
     > &
       Schema.Attribute.Private;
-    phone_number: Schema.Attribute.String;
-    plus_one_allowed: Schema.Attribute.Boolean;
+    phone_number: Schema.Attribute.String & Schema.Attribute.Required;
+    plus_one_allowed: Schema.Attribute.Boolean & Schema.Attribute.Required;
     profile_picture: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -1171,7 +1172,6 @@ export interface ApiWeddingInviteTokenWeddingInviteToken
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    guest_name: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
