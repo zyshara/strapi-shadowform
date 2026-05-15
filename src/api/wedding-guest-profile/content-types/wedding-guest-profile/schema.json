@@ -29,6 +29,24 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "wedding_guest_profile"
+    },
+    "address": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "plus_one_allowed": {
+      "type": "boolean"
+    },
+    "allowed_at_ceremony": {
+      "type": "boolean"
+    },
+    "wedding_rsvp": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wedding-rsvp.wedding-rsvp",
+      "mappedBy": "wedding_guest_profile"
     }
   }
 }

@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wedding_quest_logs",
+  "info": {
+    "singularName": "wedding-quest-log",
+    "pluralName": "wedding-quest-logs",
+    "displayName": "WeddingQuestLog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

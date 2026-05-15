@@ -1119,6 +1119,8 @@ export interface ApiWeddingGuestProfileWeddingGuestProfile
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.String;
+    allowed_at_ceremony: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1129,6 +1131,8 @@ export interface ApiWeddingGuestProfileWeddingGuestProfile
       'api::wedding-guest-profile.wedding-guest-profile'
     > &
       Schema.Attribute.Private;
+    phone_number: Schema.Attribute.String;
+    plus_one_allowed: Schema.Attribute.Boolean;
     profile_picture: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -1139,6 +1143,10 @@ export interface ApiWeddingGuestProfileWeddingGuestProfile
     user: Schema.Attribute.Relation<
       'oneToOne',
       'plugin::users-permissions.user'
+    >;
+    wedding_rsvp: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::wedding-rsvp.wedding-rsvp'
     >;
   };
 }
@@ -1171,6 +1179,70 @@ export interface ApiWeddingInviteTokenWeddingInviteToken
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWeddingQuestLogWeddingQuestLog
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'wedding_quest_logs';
+  info: {
+    displayName: 'WeddingQuestLog';
+    pluralName: 'wedding-quest-logs';
+    singularName: 'wedding-quest-log';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wedding-quest-log.wedding-quest-log'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWeddingRsvpWeddingRsvp extends Struct.CollectionTypeSchema {
+  collectionName: 'wedding_rsvps';
+  info: {
+    displayName: 'WeddingRSVP';
+    pluralName: 'wedding-rsvps';
+    singularName: 'wedding-rsvp';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attending_ceremony: Schema.Attribute.Boolean;
+    attending_reception: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wedding-rsvp.wedding-rsvp'
+    > &
+      Schema.Attribute.Private;
+    plus_one_address: Schema.Attribute.String;
+    plus_one_name: Schema.Attribute.String;
+    plus_one_phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    wedding_guest_profile: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::wedding-guest-profile.wedding-guest-profile'
+    >;
   };
 }
 
@@ -1708,6 +1780,8 @@ declare module '@strapi/strapi' {
       'api::url.url': ApiUrlUrl;
       'api::wedding-guest-profile.wedding-guest-profile': ApiWeddingGuestProfileWeddingGuestProfile;
       'api::wedding-invite-token.wedding-invite-token': ApiWeddingInviteTokenWeddingInviteToken;
+      'api::wedding-quest-log.wedding-quest-log': ApiWeddingQuestLogWeddingQuestLog;
+      'api::wedding-rsvp.wedding-rsvp': ApiWeddingRsvpWeddingRsvp;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

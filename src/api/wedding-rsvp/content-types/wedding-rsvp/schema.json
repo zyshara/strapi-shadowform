@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wedding_rsvps",
+  "info": {
+    "singularName": "wedding-rsvp",
+    "pluralName": "wedding-rsvps",
+    "displayName": "WeddingRSVP"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "wedding_guest_profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wedding-guest-profile.wedding-guest-profile",
+      "inversedBy": "wedding_rsvp"
+    },
+    "plus_one_name": {
+      "type": "string"
+    },
+    "plus_one_address": {
+      "type": "string"
+    },
+    "plus_one_phone": {
+      "type": "string"
+    },
+    "attending_ceremony": {
+      "type": "boolean"
+    },
+    "attending_reception": {
+      "type": "boolean"
+    }
+  }
+}
