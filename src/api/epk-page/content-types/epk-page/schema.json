@@ -35,6 +35,16 @@
       "type": "component",
       "component": "shared.link-v2",
       "repeatable": true
+    },
+    "portrait": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

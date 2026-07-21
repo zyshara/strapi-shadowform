@@ -661,6 +661,7 @@ export interface ApiEpkPageEpkPage extends Struct.CollectionTypeSchema {
       'epk-page-components.photos-and-media',
       true
     >;
+    portrait: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     press: Schema.Attribute.Component<'epk-page-components.press', true>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
