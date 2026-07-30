@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dome_of_doom_releases",
+  "info": {
+    "singularName": "dome-of-doom-release",
+    "pluralName": "dome-of-doom-releases",
+    "displayName": "Dome of Doom Release"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "artist": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Single",
+        "EP",
+        "Album",
+        "Remix",
+        "Compilation"
+      ]
+    },
+    "spotify_url": {
+      "type": "string"
+    },
+    "bandcamp_url": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "bandcamp_artwork_url": {
+      "type": "string"
+    }
+  }
+}

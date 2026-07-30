@@ -552,6 +552,43 @@ export interface ApiArtistsStatisticsArtistsStatistics
   };
 }
 
+export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dome_of_doom_releases';
+  info: {
+    displayName: 'Dome of Doom Release';
+    pluralName: 'dome-of-doom-releases';
+    singularName: 'dome-of-doom-release';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artist: Schema.Attribute.String;
+    bandcamp_artwork_url: Schema.Attribute.String;
+    bandcamp_url: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-release.dome-of-doom-release'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    spotify_url: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
+      ['Single', 'EP', 'Album', 'Remix', 'Compilation']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.Integer;
+  };
+}
+
 export interface ApiEngineeringPageEngineeringPage
   extends Struct.SingleTypeSchema {
   collectionName: 'engineering_pages';
@@ -1811,6 +1848,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::artist.artist': ApiArtistArtist;
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
+      'api::dome-of-doom-release.dome-of-doom-release': ApiDomeOfDoomReleaseDomeOfDoomRelease;
       'api::engineering-page.engineering-page': ApiEngineeringPageEngineeringPage;
       'api::engineering-web-archive-project.engineering-web-archive-project': ApiEngineeringWebArchiveProjectEngineeringWebArchiveProject;
       'api::epk-page.epk-page': ApiEpkPageEpkPage;
