@@ -38,6 +38,15 @@
     },
     "bandcamp_artwork_url": {
       "type": "string"
+    },
+    "artists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::artist.artist",
+      "mappedBy": "releases"
+    },
+    "release_date": {
+      "type": "date"
     }
   }
 }

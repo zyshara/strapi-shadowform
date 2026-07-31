@@ -26,6 +26,16 @@ export interface AllLinkWImage extends Struct.ComponentSchema {
   };
 }
 
+export interface AllString extends Struct.ComponentSchema {
+  collectionName: 'components_all_strings';
+  info: {
+    displayName: 'String';
+  };
+  attributes: {
+    text: Schema.Attribute.String;
+  };
+}
+
 export interface EpkPageComponentsFeaturedTracks
   extends Struct.ComponentSchema {
   collectionName: 'components_epk_page_components_featured_tracks';
@@ -150,6 +160,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'all.link': AllLink;
       'all.link-w-image': AllLinkWImage;
+      'all.string': AllString;
       'epk-page-components.featured-tracks': EpkPageComponentsFeaturedTracks;
       'epk-page-components.photos-and-media': EpkPageComponentsPhotosAndMedia;
       'epk-page-components.press': EpkPageComponentsPress;

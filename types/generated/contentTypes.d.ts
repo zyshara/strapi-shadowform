@@ -504,6 +504,10 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     primary_genre: Schema.Attribute.Relation<'oneToOne', 'api::genre.genre'>;
     publishedAt: Schema.Attribute.DateTime;
+    releases: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-release.dome-of-doom-release'
+    >;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -552,6 +556,35 @@ export interface ApiArtistsStatisticsArtistsStatistics
   };
 }
 
+export interface ApiDomeOfDoomArtistDomeOfDoomArtist
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dome_of_doom_artists';
+  info: {
+    displayName: 'Dome of Doom Artist';
+    pluralName: 'dome-of-doom-artists';
+    singularName: 'dome-of-doom-artist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-artist.dome-of-doom-artist'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'dome_of_doom_releases';
@@ -565,6 +598,7 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
   };
   attributes: {
     artist: Schema.Attribute.String;
+    artists: Schema.Attribute.Relation<'manyToMany', 'api::artist.artist'>;
     bandcamp_artwork_url: Schema.Attribute.String;
     bandcamp_url: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
@@ -578,6 +612,7 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    release_date: Schema.Attribute.Date;
     spotify_url: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<
       ['Single', 'EP', 'Album', 'Remix', 'Compilation']
@@ -1848,6 +1883,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::artist.artist': ApiArtistArtist;
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
+      'api::dome-of-doom-artist.dome-of-doom-artist': ApiDomeOfDoomArtistDomeOfDoomArtist;
       'api::dome-of-doom-release.dome-of-doom-release': ApiDomeOfDoomReleaseDomeOfDoomRelease;
       'api::engineering-page.engineering-page': ApiEngineeringPageEngineeringPage;
       'api::engineering-web-archive-project.engineering-web-archive-project': ApiEngineeringWebArchiveProjectEngineeringWebArchiveProject;

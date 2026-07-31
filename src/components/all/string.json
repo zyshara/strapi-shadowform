@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_all_strings",
+  "info": {
+    "displayName": "String"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

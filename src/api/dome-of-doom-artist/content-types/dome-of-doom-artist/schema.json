@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dome_of_doom_artists",
+  "info": {
+    "singularName": "dome-of-doom-artist",
+    "pluralName": "dome-of-doom-artists",
+    "displayName": "Dome of Doom Artist"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
