@@ -42,7 +42,7 @@
     "artists": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::artist.artist",
+      "target": "api::dome-of-doom-artist.dome-of-doom-artist",
       "mappedBy": "releases"
     },
     "release_date": {

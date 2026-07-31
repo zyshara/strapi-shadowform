@@ -13,6 +13,12 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "releases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dome-of-doom-release.dome-of-doom-release",
+      "inversedBy": "artists"
     }
   }
 }

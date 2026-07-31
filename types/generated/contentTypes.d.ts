@@ -504,10 +504,6 @@ export interface ApiArtistArtist extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     primary_genre: Schema.Attribute.Relation<'oneToOne', 'api::genre.genre'>;
     publishedAt: Schema.Attribute.DateTime;
-    releases: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::dome-of-doom-release.dome-of-doom-release'
-    >;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -579,6 +575,10 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    releases: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-release.dome-of-doom-release'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -598,7 +598,10 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
   };
   attributes: {
     artist: Schema.Attribute.String;
-    artists: Schema.Attribute.Relation<'manyToMany', 'api::artist.artist'>;
+    artists: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-artist.dome-of-doom-artist'
+    >;
     bandcamp_artwork_url: Schema.Attribute.String;
     bandcamp_url: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
