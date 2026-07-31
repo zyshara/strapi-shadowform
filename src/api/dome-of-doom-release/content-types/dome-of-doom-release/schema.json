@@ -14,9 +14,6 @@
     "name": {
       "type": "string"
     },
-    "artist": {
-      "type": "string"
-    },
     "type": {
       "type": "enumeration",
       "enum": [
@@ -24,7 +21,8 @@
         "EP",
         "Album",
         "Remix",
-        "Compilation"
+        "Compilation",
+        "Sample Pack"
       ]
     },
     "spotify_url": {
@@ -32,9 +30,6 @@
     },
     "bandcamp_url": {
       "type": "string"
-    },
-    "year": {
-      "type": "integer"
     },
     "bandcamp_artwork_url": {
       "type": "string"
@@ -47,6 +42,10 @@
     },
     "release_date": {
       "type": "date"
+    },
+    "hide_on_discography_page": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

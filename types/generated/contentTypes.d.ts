@@ -597,7 +597,6 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
     draftAndPublish: true;
   };
   attributes: {
-    artist: Schema.Attribute.String;
     artists: Schema.Attribute.Relation<
       'manyToMany',
       'api::dome-of-doom-artist.dome-of-doom-artist'
@@ -607,6 +606,8 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    hide_on_discography_page: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -618,12 +619,11 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
     release_date: Schema.Attribute.Date;
     spotify_url: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<
-      ['Single', 'EP', 'Album', 'Remix', 'Compilation']
+      ['Single', 'EP', 'Album', 'Remix', 'Compilation', 'Sample Pack']
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    year: Schema.Attribute.Integer;
   };
 }
 
