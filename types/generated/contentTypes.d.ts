@@ -579,6 +579,10 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
       'manyToMany',
       'api::dome-of-doom-release.dome-of-doom-release'
     >;
+    shows: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-show.dome-of-doom-show'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -621,6 +625,41 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
     type: Schema.Attribute.Enumeration<
       ['Single', 'EP', 'Album', 'Remix', 'Compilation', 'Sample Pack']
     >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDomeOfDoomShowDomeOfDoomShow
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dome_of_doom_shows';
+  info: {
+    displayName: 'Dome of Doom Show';
+    pluralName: 'dome-of-doom-shows';
+    singularName: 'dome-of-doom-show';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artists: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-artist.dome-of-doom-artist'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-show.dome-of-doom-show'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1888,6 +1927,7 @@ declare module '@strapi/strapi' {
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
       'api::dome-of-doom-artist.dome-of-doom-artist': ApiDomeOfDoomArtistDomeOfDoomArtist;
       'api::dome-of-doom-release.dome-of-doom-release': ApiDomeOfDoomReleaseDomeOfDoomRelease;
+      'api::dome-of-doom-show.dome-of-doom-show': ApiDomeOfDoomShowDomeOfDoomShow;
       'api::engineering-page.engineering-page': ApiEngineeringPageEngineeringPage;
       'api::engineering-web-archive-project.engineering-web-archive-project': ApiEngineeringWebArchiveProjectEngineeringWebArchiveProject;
       'api::epk-page.epk-page': ApiEpkPageEpkPage;

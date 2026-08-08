@@ -19,6 +19,12 @@
       "relation": "manyToMany",
       "target": "api::dome-of-doom-release.dome-of-doom-release",
       "inversedBy": "artists"
+    },
+    "shows": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dome-of-doom-show.dome-of-doom-show",
+      "inversedBy": "artists"
     }
   }
 }

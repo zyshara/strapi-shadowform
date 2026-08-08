@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dome_of_doom_shows",
+  "info": {
+    "singularName": "dome-of-doom-show",
+    "pluralName": "dome-of-doom-shows",
+    "displayName": "Dome of Doom Show"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "artists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dome-of-doom-artist.dome-of-doom-artist",
+      "mappedBy": "shows"
+    }
+  }
+}
