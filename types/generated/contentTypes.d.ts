@@ -668,6 +668,7 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    not_available_on_spotify: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     release_date: Schema.Attribute.Date;
     spotify_url: Schema.Attribute.String;
