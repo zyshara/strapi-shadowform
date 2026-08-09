@@ -42,10 +42,6 @@
     },
     "release_date": {
       "type": "date"
-    },
-    "hide_on_discography_page": {
-      "type": "boolean",
-      "default": false
     }
   }
 }

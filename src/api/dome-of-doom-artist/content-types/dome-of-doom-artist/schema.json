@@ -25,6 +25,34 @@
       "relation": "manyToMany",
       "target": "api::dome-of-doom-show.dome-of-doom-show",
       "inversedBy": "artists"
+    },
+    "bandcamp_url": {
+      "type": "string"
+    },
+    "spotify_url": {
+      "type": "string"
+    },
+    "bandcamp_profile_picture": {
+      "type": "string"
+    },
+    "profile_picture_override": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bandcamp_biography": {
+      "type": "blocks"
+    },
+    "spotify_biography": {
+      "type": "blocks"
+    },
+    "biography_override": {
+      "type": "blocks"
     }
   }
 }

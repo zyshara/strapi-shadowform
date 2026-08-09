@@ -606,6 +606,10 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
     draftAndPublish: true;
   };
   attributes: {
+    bandcamp_biography: Schema.Attribute.Blocks;
+    bandcamp_profile_picture: Schema.Attribute.String;
+    bandcamp_url: Schema.Attribute.String;
+    biography_override: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -616,6 +620,9 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    profile_picture_override: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     releases: Schema.Attribute.Relation<
       'manyToMany',
@@ -625,6 +632,8 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
       'manyToMany',
       'api::dome-of-doom-show.dome-of-doom-show'
     >;
+    spotify_biography: Schema.Attribute.Blocks;
+    spotify_url: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -652,8 +661,6 @@ export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hide_on_discography_page: Schema.Attribute.Boolean &
-      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
