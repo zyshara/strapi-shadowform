@@ -156,7 +156,7 @@ export interface SharedLinkV2 extends Struct.ComponentSchema {
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'all.link': AllLink;
       'all.link-w-image': AllLinkWImage;

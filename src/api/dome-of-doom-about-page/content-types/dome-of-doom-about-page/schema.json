@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dome_of_doom_about_pages",
+  "info": {
+    "singularName": "dome-of-doom-about-page",
+    "pluralName": "dome-of-doom-about-pages",
+    "displayName": "Dome of Doom About Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Description": {
+      "type": "blocks"
+    }
+  }
+}
