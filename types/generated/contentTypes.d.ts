@@ -620,6 +620,10 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    press: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-press-item.dome-of-doom-press-item'
+    >;
     profile_picture_override: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -634,6 +638,79 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
     >;
     spotify_biography: Schema.Attribute.Blocks;
     spotify_url: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDomeOfDoomPressItemDomeOfDoomPressItem
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dome_of_doom_press_items';
+  info: {
+    displayName: 'Dome of Doom Press Item';
+    pluralName: 'dome-of-doom-press-items';
+    singularName: 'dome-of-doom-press-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artists: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-artist.dome-of-doom-artist'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-press-item.dome-of-doom-press-item'
+    > &
+      Schema.Attribute.Private;
+    outlet: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::dome-of-doom-press-outlet.dome-of-doom-press-outlet'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    summary: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDomeOfDoomPressOutletDomeOfDoomPressOutlet
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dome_of_doom_press_outlets';
+  info: {
+    displayName: 'Dome of Doom Press Outlet';
+    pluralName: 'dome-of-doom-press-outlets';
+    singularName: 'dome-of-doom-press-outlet';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-press-item.dome-of-doom-press-item'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-press-outlet.dome-of-doom-press-outlet'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1978,6 +2055,8 @@ declare module '@strapi/strapi' {
       'api::artists-statistics.artists-statistics': ApiArtistsStatisticsArtistsStatistics;
       'api::dome-of-doom-about-page.dome-of-doom-about-page': ApiDomeOfDoomAboutPageDomeOfDoomAboutPage;
       'api::dome-of-doom-artist.dome-of-doom-artist': ApiDomeOfDoomArtistDomeOfDoomArtist;
+      'api::dome-of-doom-press-item.dome-of-doom-press-item': ApiDomeOfDoomPressItemDomeOfDoomPressItem;
+      'api::dome-of-doom-press-outlet.dome-of-doom-press-outlet': ApiDomeOfDoomPressOutletDomeOfDoomPressOutlet;
       'api::dome-of-doom-release.dome-of-doom-release': ApiDomeOfDoomReleaseDomeOfDoomRelease;
       'api::dome-of-doom-show.dome-of-doom-show': ApiDomeOfDoomShowDomeOfDoomShow;
       'api::engineering-page.engineering-page': ApiEngineeringPageEngineeringPage;

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dome_of_doom_press_items",
+  "info": {
+    "singularName": "dome-of-doom-press-item",
+    "pluralName": "dome-of-doom-press-items",
+    "displayName": "Dome of Doom Press Item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "blocks"
+    },
+    "artists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dome-of-doom-artist.dome-of-doom-artist",
+      "inversedBy": "press"
+    },
+    "date": {
+      "type": "date"
+    },
+    "outlet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dome-of-doom-press-outlet.dome-of-doom-press-outlet",
+      "inversedBy": "items"
+    }
+  }
+}
