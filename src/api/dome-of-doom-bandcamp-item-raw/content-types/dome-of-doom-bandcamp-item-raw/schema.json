@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dome_of_doom_bandcamp_item_raws",
+  "info": {
+    "singularName": "dome-of-doom-bandcamp-item-raw",
+    "pluralName": "dome-of-doom-bandcamp-item-raws",
+    "displayName": "Dome of Doom Bandcamp Item (Raw)",
+    "description": "Layer 1: exact mirror of a scraped Bandcamp /music or /merch item. System-owned - fully overwritten on every scrape, never hand-edited. Derived DomeOfDoomCatalogItem/DomeOfDoomPhysicalItem records are built from this."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bandcamp_url": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "item_type": {
+      "type": "enumeration",
+      "enum": ["album", "track", "package"]
+    },
+    "slug": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "artists": {
+      "type": "json"
+    },
+    "release_date": {
+      "type": "datetime"
+    },
+    "publish_date": {
+      "type": "datetime"
+    },
+    "description": {
+      "type": "text"
+    },
+    "credits": {
+      "type": "text"
+    },
+    "license": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "artwork_url": {
+      "type": "string"
+    },
+    "tracks": {
+      "type": "json"
+    },
+    "packages": {
+      "type": "json"
+    },
+    "sources": {
+      "type": "json"
+    },
+    "scraped_at": {
+      "type": "datetime"
+    }
+  }
+}
