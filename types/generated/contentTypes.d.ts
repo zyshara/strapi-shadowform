@@ -566,7 +566,7 @@ export interface ApiArtistsStatisticsArtistsStatistics
 }
 
 export interface ApiDomeOfDoomAboutPageDomeOfDoomAboutPage
-  extends Struct.CollectionTypeSchema {
+  extends Struct.SingleTypeSchema {
   collectionName: 'dome_of_doom_about_pages';
   info: {
     displayName: 'Dome of Doom About Page';
