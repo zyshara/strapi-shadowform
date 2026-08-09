@@ -680,6 +680,7 @@ export interface ApiDomeOfDoomPressItemDomeOfDoomPressItem
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -714,6 +715,7 @@ export interface ApiDomeOfDoomPressOutletDomeOfDoomPressOutlet
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    website: Schema.Attribute.String;
   };
 }
 

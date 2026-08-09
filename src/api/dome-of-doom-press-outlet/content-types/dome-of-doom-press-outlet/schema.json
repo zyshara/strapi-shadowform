@@ -29,6 +29,9 @@
       "relation": "oneToMany",
       "target": "api::dome-of-doom-press-item.dome-of-doom-press-item",
       "mappedBy": "outlet"
+    },
+    "website": {
+      "type": "string"
     }
   }
 }
