@@ -59,6 +59,19 @@
       "relation": "manyToMany",
       "target": "api::dome-of-doom-press-item.dome-of-doom-press-item",
       "mappedBy": "artists"
+    },
+    "bandcamp_raw_data": {
+      "type": "json"
+    },
+    "derived": {
+      "type": "component",
+      "repeatable": false,
+      "component": "dome-of-doom.artist-derived"
+    },
+    "overrides": {
+      "type": "component",
+      "repeatable": false,
+      "component": "dome-of-doom.artist-overrides"
     }
   }
 }

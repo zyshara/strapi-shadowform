@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_dome_of_doom_artist_overrides",
+  "info": {
+    "displayName": "Dome of Doom Artist Overrides",
+    "description": "Layer 3: human-owned corrections. Sync never touches this - base placeholder, to be fleshed out."
+  },
+  "options": {},
+  "attributes": {
+    "editorial_notes": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
