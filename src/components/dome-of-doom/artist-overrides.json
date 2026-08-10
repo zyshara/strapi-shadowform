@@ -8,6 +8,9 @@
   "attributes": {
     "editorial_notes": {
       "type": "text"
+    },
+    "description": {
+      "type": "blocks"
     }
   },
   "config": {}
