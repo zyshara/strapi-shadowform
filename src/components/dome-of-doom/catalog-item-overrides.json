@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_dome_of_doom_catalog_item_overrides",
+  "info": {
+    "displayName": "Dome of Doom Catalog Item Overrides",
+    "description": "Layer 3: human-owned corrections. Sync never touches this. No override set -> derived.label_role's suggestion is what's used."
+  },
+  "options": {},
+  "attributes": {
+    "label_role": {
+      "type": "enumeration",
+      "enum": ["reissue", "original", "physical", "other"]
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_dome_of_doom_catalog_item_deriveds",
+  "info": {
+    "displayName": "Dome of Doom Catalog Item Derived",
+    "description": "Layer 2: computed from raw_item on every sync. System-owned, always overwritten - never hand-edited. label_role here is a SUGGESTION only - see overrides.label_role for the confirmed value."
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "artwork_url": {
+      "type": "string"
+    },
+    "release_date": {
+      "type": "datetime"
+    },
+    "publish_date": {
+      "type": "datetime"
+    },
+    "suggested_type": {
+      "type": "enumeration",
+      "enum": ["album", "ep", "single", "compilation", "sample_pack"]
+    },
+    "formats": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dome-of-doom-format.dome-of-doom-format"
+    },
+    "label_role": {
+      "type": "enumeration",
+      "enum": ["reissue", "original", "physical", "other"]
+    }
+  },
+  "config": {}
+}

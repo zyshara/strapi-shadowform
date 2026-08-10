@@ -5,7 +5,7 @@
     "singularName": "dome-of-doom-catalog-item",
     "pluralName": "dome-of-doom-catalog-items",
     "displayName": "Dome of Doom Catalog Item",
-    "description": "Layer 2/3: one row per musical release derived from a DomeOfDoomBandcampItemRaw row (item_type album/track). Minimal for now - derived/overrides components come next."
+    "description": "Layer 2/3: one row per musical release derived from a DomeOfDoomBandcampItemRaw row where item_type is album/track AND sources includes \"music\" (Bandcamp /music page is the source of truth for catalog membership, per conversation history)."
   },
   "options": {
     "draftAndPublish": false
@@ -21,6 +21,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::dome-of-doom-bandcamp-item-raw.dome-of-doom-bandcamp-item-raw"
+    },
+    "derived": {
+      "type": "component",
+      "repeatable": false,
+      "component": "dome-of-doom.catalog-item-derived"
+    },
+    "overrides": {
+      "type": "component",
+      "repeatable": false,
+      "component": "dome-of-doom.catalog-item-overrides"
     }
   }
 }

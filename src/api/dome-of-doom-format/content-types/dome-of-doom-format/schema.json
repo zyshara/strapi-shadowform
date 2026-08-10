@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dome_of_doom_formats",
+  "info": {
+    "singularName": "dome-of-doom-format",
+    "pluralName": "dome-of-doom-formats",
+    "displayName": "Dome of Doom Format",
+    "description": "Small lookup vocabulary (Vinyl, Cassette, Compact Disc, Digital, Other) shared by CatalogItem.derived.formats today and eventually PhysicalItem, so the vocabulary can't drift between the two."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}
