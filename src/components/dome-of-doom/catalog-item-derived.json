@@ -33,6 +33,11 @@
     "label_role": {
       "type": "enumeration",
       "enum": ["reissue", "original", "physical", "other"]
+    },
+    "artists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dome-of-doom-artist.dome-of-doom-artist"
     }
   },
   "config": {}
