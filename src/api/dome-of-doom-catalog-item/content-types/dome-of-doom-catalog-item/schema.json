@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dome_of_doom_catalog_items",
+  "info": {
+    "singularName": "dome-of-doom-catalog-item",
+    "pluralName": "dome-of-doom-catalog-items",
+    "displayName": "Dome of Doom Catalog Item",
+    "description": "Layer 2/3: one row per musical release derived from a DomeOfDoomBandcampItemRaw row (item_type album/track). Minimal for now - derived/overrides components come next."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bandcamp_url": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "raw_item": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dome-of-doom-bandcamp-item-raw.dome-of-doom-bandcamp-item-raw"
+    }
+  }
+}
