@@ -9,6 +9,9 @@
     "title": {
       "type": "string"
     },
+    "catalog_number": {
+      "type": "string"
+    },
     "label_role": {
       "type": "enumeration",
       "enum": ["reissue", "original", "physical", "other"]
