@@ -6,11 +6,13 @@
   },
   "options": {},
   "attributes": {
-    "editorial_notes": {
-      "type": "text"
-    },
     "description": {
       "type": "blocks"
+    },
+    "profile_picture": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
     }
   },
   "config": {}
