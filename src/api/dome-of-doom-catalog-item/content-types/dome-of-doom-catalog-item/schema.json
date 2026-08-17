@@ -24,13 +24,17 @@
     },
     "derived": {
       "type": "component",
-      "repeatable": false,
-      "component": "dome-of-doom.catalog-item-derived"
+      "component": "dome-of-doom.catalog-item-derived",
+      "repeatable": false
     },
     "overrides": {
       "type": "component",
-      "repeatable": false,
-      "component": "dome-of-doom.catalog-item-overrides"
+      "component": "dome-of-doom.catalog-item-overrides",
+      "repeatable": false
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }

@@ -715,6 +715,7 @@ export interface ApiDomeOfDoomCatalogItemDomeOfDoomCatalogItem
       'oneToOne',
       'api::dome-of-doom-bandcamp-item-raw.dome-of-doom-bandcamp-item-raw'
     >;
+    slug: Schema.Attribute.String & Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
