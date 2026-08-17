@@ -18,8 +18,10 @@
     "spotify_url": {
       "type": "string"
     },
-    "spotify_description": {
-      "type": "text"
+    "catalog_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dome-of-doom-catalog-item.dome-of-doom-catalog-item"
     }
   },
   "config": {}

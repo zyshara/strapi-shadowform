@@ -45,8 +45,11 @@ export interface DomeOfDoomArtistDerived extends Struct.ComponentSchema {
   attributes: {
     bandcamp_image: Schema.Attribute.String;
     bandcamp_url: Schema.Attribute.String;
+    catalog_items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-catalog-item.dome-of-doom-catalog-item'
+    >;
     name: Schema.Attribute.String;
-    spotify_description: Schema.Attribute.Text;
     spotify_url: Schema.Attribute.String;
   };
 }
@@ -71,13 +74,13 @@ export interface DomeOfDoomCatalogItemDerived extends Struct.ComponentSchema {
   };
   attributes: {
     artists: Schema.Attribute.Relation<
-      'manyToMany',
+      'oneToMany',
       'api::dome-of-doom-artist.dome-of-doom-artist'
     >;
     artwork_url: Schema.Attribute.String;
     description: Schema.Attribute.Text;
     formats: Schema.Attribute.Relation<
-      'manyToMany',
+      'oneToMany',
       'api::dome-of-doom-format.dome-of-doom-format'
     >;
     label_role: Schema.Attribute.Enumeration<

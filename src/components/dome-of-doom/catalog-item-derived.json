@@ -27,7 +27,7 @@
     },
     "formats": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::dome-of-doom-format.dome-of-doom-format"
     },
     "label_role": {
@@ -36,7 +36,7 @@
     },
     "artists": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::dome-of-doom-artist.dome-of-doom-artist"
     },
     "packages": {
