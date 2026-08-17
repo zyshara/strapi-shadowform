@@ -17,12 +17,6 @@
     "summary": {
       "type": "blocks"
     },
-    "artists": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::dome-of-doom-artist.dome-of-doom-artist",
-      "inversedBy": "press"
-    },
     "date": {
       "type": "date"
     },

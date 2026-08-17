@@ -606,13 +606,11 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
     draftAndPublish: true;
   };
   attributes: {
-    bandcamp_biography: Schema.Attribute.Blocks;
-    bandcamp_profile_picture: Schema.Attribute.String;
-    bandcamp_url: Schema.Attribute.String;
-    biography_override: Schema.Attribute.Blocks;
+    bandcamp_raw_data: Schema.Attribute.JSON;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    derived: Schema.Attribute.Component<'dome-of-doom.artist-derived', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -620,24 +618,11 @@ export interface ApiDomeOfDoomArtistDomeOfDoomArtist
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
-    press: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::dome-of-doom-press-item.dome-of-doom-press-item'
-    >;
-    profile_picture_override: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
+    overrides: Schema.Attribute.Component<
+      'dome-of-doom.artist-overrides',
+      false
     >;
     publishedAt: Schema.Attribute.DateTime;
-    releases: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::dome-of-doom-release.dome-of-doom-release'
-    >;
-    shows: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::dome-of-doom-show.dome-of-doom-show'
-    >;
-    spotify_biography: Schema.Attribute.Blocks;
-    spotify_url: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -691,6 +676,82 @@ export interface ApiDomeOfDoomBandcampItemRawDomeOfDoomBandcampItemRaw
   };
 }
 
+export interface ApiDomeOfDoomCatalogItemDomeOfDoomCatalogItem
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dome_of_doom_catalog_items';
+  info: {
+    description: 'Layer 2/3: one row per musical release derived from a DomeOfDoomBandcampItemRaw row where item_type is album/track AND sources includes "music" (Bandcamp /music page is the source of truth for catalog membership, per conversation history).';
+    displayName: 'Dome of Doom Catalog Item';
+    pluralName: 'dome-of-doom-catalog-items';
+    singularName: 'dome-of-doom-catalog-item';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    bandcamp_url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    derived: Schema.Attribute.Component<
+      'dome-of-doom.catalog-item-derived',
+      false
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-catalog-item.dome-of-doom-catalog-item'
+    > &
+      Schema.Attribute.Private;
+    overrides: Schema.Attribute.Component<
+      'dome-of-doom.catalog-item-overrides',
+      false
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    raw_item: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::dome-of-doom-bandcamp-item-raw.dome-of-doom-bandcamp-item-raw'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDomeOfDoomFormatDomeOfDoomFormat
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dome_of_doom_formats';
+  info: {
+    description: "Small lookup vocabulary (Vinyl, Cassette, Compact Disc, Digital, Other) shared by CatalogItem.derived.formats today and eventually PhysicalItem, so the vocabulary can't drift between the two.";
+    displayName: 'Dome of Doom Format';
+    pluralName: 'dome-of-doom-formats';
+    singularName: 'dome-of-doom-format';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dome-of-doom-format.dome-of-doom-format'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDomeOfDoomPressItemDomeOfDoomPressItem
   extends Struct.CollectionTypeSchema {
   collectionName: 'dome_of_doom_press_items';
@@ -703,10 +764,6 @@ export interface ApiDomeOfDoomPressItemDomeOfDoomPressItem
     draftAndPublish: true;
   };
   attributes: {
-    artists: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::dome-of-doom-artist.dome-of-doom-artist'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -766,47 +823,6 @@ export interface ApiDomeOfDoomPressOutletDomeOfDoomPressOutlet
   };
 }
 
-export interface ApiDomeOfDoomReleaseDomeOfDoomRelease
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'dome_of_doom_releases';
-  info: {
-    displayName: 'Dome of Doom Release';
-    pluralName: 'dome-of-doom-releases';
-    singularName: 'dome-of-doom-release';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    artists: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::dome-of-doom-artist.dome-of-doom-artist'
-    >;
-    bandcamp_artwork_url: Schema.Attribute.String;
-    bandcamp_url: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::dome-of-doom-release.dome-of-doom-release'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    not_available_on_spotify: Schema.Attribute.Boolean;
-    publishedAt: Schema.Attribute.DateTime;
-    release_date: Schema.Attribute.Date;
-    spotify_url: Schema.Attribute.String;
-    type: Schema.Attribute.Enumeration<
-      ['Single', 'EP', 'Album', 'Remix', 'Compilation', 'Sample Pack']
-    >;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiDomeOfDoomShowDomeOfDoomShow
   extends Struct.CollectionTypeSchema {
   collectionName: 'dome_of_doom_shows';
@@ -819,10 +835,6 @@ export interface ApiDomeOfDoomShowDomeOfDoomShow
     draftAndPublish: true;
   };
   attributes: {
-    artists: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::dome-of-doom-artist.dome-of-doom-artist'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2105,9 +2117,10 @@ declare module '@strapi/strapi' {
       'api::dome-of-doom-about-page.dome-of-doom-about-page': ApiDomeOfDoomAboutPageDomeOfDoomAboutPage;
       'api::dome-of-doom-artist.dome-of-doom-artist': ApiDomeOfDoomArtistDomeOfDoomArtist;
       'api::dome-of-doom-bandcamp-item-raw.dome-of-doom-bandcamp-item-raw': ApiDomeOfDoomBandcampItemRawDomeOfDoomBandcampItemRaw;
+      'api::dome-of-doom-catalog-item.dome-of-doom-catalog-item': ApiDomeOfDoomCatalogItemDomeOfDoomCatalogItem;
+      'api::dome-of-doom-format.dome-of-doom-format': ApiDomeOfDoomFormatDomeOfDoomFormat;
       'api::dome-of-doom-press-item.dome-of-doom-press-item': ApiDomeOfDoomPressItemDomeOfDoomPressItem;
       'api::dome-of-doom-press-outlet.dome-of-doom-press-outlet': ApiDomeOfDoomPressOutletDomeOfDoomPressOutlet;
-      'api::dome-of-doom-release.dome-of-doom-release': ApiDomeOfDoomReleaseDomeOfDoomRelease;
       'api::dome-of-doom-show.dome-of-doom-show': ApiDomeOfDoomShowDomeOfDoomShow;
       'api::engineering-page.engineering-page': ApiEngineeringPageEngineeringPage;
       'api::engineering-web-archive-project.engineering-web-archive-project': ApiEngineeringWebArchiveProjectEngineeringWebArchiveProject;

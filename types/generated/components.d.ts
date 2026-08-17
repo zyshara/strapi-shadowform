@@ -36,6 +36,84 @@ export interface AllString extends Struct.ComponentSchema {
   };
 }
 
+export interface DomeOfDoomArtistDerived extends Struct.ComponentSchema {
+  collectionName: 'components_dome_of_doom_artist_deriveds';
+  info: {
+    description: 'Layer 2: computed from bandcamp_raw_data on every sync. System-owned, always overwritten - never hand-edited.';
+    displayName: 'Dome of Doom Artist Derived';
+  };
+  attributes: {
+    bandcamp_image: Schema.Attribute.String;
+    bandcamp_url: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    spotify_description: Schema.Attribute.Text;
+    spotify_url: Schema.Attribute.String;
+  };
+}
+
+export interface DomeOfDoomArtistOverrides extends Struct.ComponentSchema {
+  collectionName: 'components_dome_of_doom_artist_overrides';
+  info: {
+    description: 'Layer 3: human-owned corrections. Sync never touches this - base placeholder, to be fleshed out.';
+    displayName: 'Dome of Doom Artist Overrides';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks;
+    profile_picture: Schema.Attribute.Media<'images'>;
+  };
+}
+
+export interface DomeOfDoomCatalogItemDerived extends Struct.ComponentSchema {
+  collectionName: 'components_dome_of_doom_catalog_item_deriveds';
+  info: {
+    description: 'Layer 2: computed from raw_item on every sync. System-owned, always overwritten - never hand-edited. label_role here is a SUGGESTION only - see overrides.label_role for the confirmed value.';
+    displayName: 'Dome of Doom Catalog Item Derived';
+  };
+  attributes: {
+    artists: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-artist.dome-of-doom-artist'
+    >;
+    artwork_url: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    formats: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::dome-of-doom-format.dome-of-doom-format'
+    >;
+    label_role: Schema.Attribute.Enumeration<
+      ['reissue', 'original', 'physical', 'other']
+    >;
+    packages: Schema.Attribute.JSON;
+    publish_date: Schema.Attribute.DateTime;
+    release_date: Schema.Attribute.DateTime;
+    suggested_type: Schema.Attribute.Enumeration<
+      ['album', 'ep', 'single', 'compilation', 'sample_pack']
+    >;
+    title: Schema.Attribute.String;
+    tracks: Schema.Attribute.JSON;
+  };
+}
+
+export interface DomeOfDoomCatalogItemOverrides extends Struct.ComponentSchema {
+  collectionName: 'components_dome_of_doom_catalog_item_overrides';
+  info: {
+    description: "Layer 3: human-owned corrections. Sync never touches this. Any field left unset here falls back to derived's own value (title/description/type) or suggestion (label_role).";
+    displayName: 'Dome of Doom Catalog Item Overrides';
+  };
+  attributes: {
+    catalog_number: Schema.Attribute.String;
+    description: Schema.Attribute.Blocks;
+    label_role: Schema.Attribute.Enumeration<
+      ['reissue', 'original', 'physical', 'other']
+    >;
+    primary_image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
+      ['album', 'ep', 'single', 'compilation', 'sample_pack']
+    >;
+  };
+}
+
 export interface EpkPageComponentsFeaturedTracks
   extends Struct.ComponentSchema {
   collectionName: 'components_epk_page_components_featured_tracks';
@@ -161,6 +239,10 @@ declare module '@strapi/strapi' {
       'all.link': AllLink;
       'all.link-w-image': AllLinkWImage;
       'all.string': AllString;
+      'dome-of-doom.artist-derived': DomeOfDoomArtistDerived;
+      'dome-of-doom.artist-overrides': DomeOfDoomArtistOverrides;
+      'dome-of-doom.catalog-item-derived': DomeOfDoomCatalogItemDerived;
+      'dome-of-doom.catalog-item-overrides': DomeOfDoomCatalogItemOverrides;
       'epk-page-components.featured-tracks': EpkPageComponentsFeaturedTracks;
       'epk-page-components.photos-and-media': EpkPageComponentsPhotosAndMedia;
       'epk-page-components.press': EpkPageComponentsPress;

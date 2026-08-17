@@ -14,64 +14,18 @@
     "name": {
       "type": "string"
     },
-    "releases": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::dome-of-doom-release.dome-of-doom-release",
-      "inversedBy": "artists"
-    },
-    "shows": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::dome-of-doom-show.dome-of-doom-show",
-      "inversedBy": "artists"
-    },
-    "bandcamp_url": {
-      "type": "string"
-    },
-    "spotify_url": {
-      "type": "string"
-    },
-    "bandcamp_profile_picture": {
-      "type": "string"
-    },
-    "profile_picture_override": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "bandcamp_biography": {
-      "type": "blocks"
-    },
-    "spotify_biography": {
-      "type": "blocks"
-    },
-    "biography_override": {
-      "type": "blocks"
-    },
-    "press": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::dome-of-doom-press-item.dome-of-doom-press-item",
-      "mappedBy": "artists"
-    },
     "bandcamp_raw_data": {
       "type": "json"
     },
     "derived": {
       "type": "component",
-      "repeatable": false,
-      "component": "dome-of-doom.artist-derived"
+      "component": "dome-of-doom.artist-derived",
+      "repeatable": false
     },
     "overrides": {
       "type": "component",
-      "repeatable": false,
-      "component": "dome-of-doom.artist-overrides"
+      "component": "dome-of-doom.artist-overrides",
+      "repeatable": false
     }
   }
 }
