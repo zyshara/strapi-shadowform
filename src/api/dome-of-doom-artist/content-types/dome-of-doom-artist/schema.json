@@ -30,6 +30,10 @@
       "type": "component",
       "component": "dome-of-doom.artist-overrides",
       "repeatable": false
+    },
+    "hide_from_roster": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
