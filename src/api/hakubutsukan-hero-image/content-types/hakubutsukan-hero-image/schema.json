@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hakubutsukan_hero_images",
+  "info": {
+    "singularName": "hakubutsukan-hero-image",
+    "pluralName": "hakubutsukan-hero-images",
+    "displayName": "Hakubutsukan Hero Image",
+    "description": "Artwork images displayed in the hakubutsukan-la hero panel."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "year": {
+      "type": "string"
+    },
+    "artists": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
