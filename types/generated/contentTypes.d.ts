@@ -1116,6 +1116,94 @@ export interface ApiGuestbookGuestbook extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHakubutsukanExhibitHakubutsukanExhibit
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hakubutsukan_exhibits';
+  info: {
+    description: 'Individual exhibit instances. Each traveling show at a new venue is a separate entry.';
+    displayName: 'Hakubutsukan Exhibit';
+    pluralName: 'hakubutsukan-exhibits';
+    singularName: 'hakubutsukan-exhibit';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    end_date: Schema.Attribute.Date;
+    exhibit_url: Schema.Attribute.String;
+    image_url: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hakubutsukan-exhibit.hakubutsukan-exhibit'
+    > &
+      Schema.Attribute.Private;
+    museum: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::hakubutsukan-museum.hakubutsukan-museum'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    start_date: Schema.Attribute.Date;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHakubutsukanMuseumHakubutsukanMuseum
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hakubutsukan_museums';
+  info: {
+    description: 'Curated LA museums, galleries, and cultural institutions.';
+    displayName: 'Hakubutsukan Museum';
+    pluralName: 'hakubutsukan-museums';
+    singularName: 'hakubutsukan-museum';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    exhibits: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hakubutsukan-exhibit.hakubutsukan-exhibit'
+    >;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hakubutsukan-museum.hakubutsukan-museum'
+    > &
+      Schema.Attribute.Private;
+    location_address: Schema.Attribute.String;
+    location_lat: Schema.Attribute.Float;
+    location_lng: Schema.Attribute.Float;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    status: Schema.Attribute.Enumeration<
+      ['open', 'temp_closed', 'permanently_closed']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'open'>;
+    tags: Schema.Attribute.JSON;
+    ticket_url: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website_url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiLinktreeLinktree extends Struct.CollectionTypeSchema {
   collectionName: 'linktrees';
   info: {
@@ -2133,6 +2221,8 @@ declare module '@strapi/strapi' {
       'api::guestbook-entry.guestbook-entry': ApiGuestbookEntryGuestbookEntry;
       'api::guestbook-tag.guestbook-tag': ApiGuestbookTagGuestbookTag;
       'api::guestbook.guestbook': ApiGuestbookGuestbook;
+      'api::hakubutsukan-exhibit.hakubutsukan-exhibit': ApiHakubutsukanExhibitHakubutsukanExhibit;
+      'api::hakubutsukan-museum.hakubutsukan-museum': ApiHakubutsukanMuseumHakubutsukanMuseum;
       'api::linktree.linktree': ApiLinktreeLinktree;
       'api::management-page.management-page': ApiManagementPageManagementPage;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;

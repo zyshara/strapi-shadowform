@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hakubutsukan_exhibits",
+  "info": {
+    "singularName": "hakubutsukan-exhibit",
+    "pluralName": "hakubutsukan-exhibits",
+    "displayName": "Hakubutsukan Exhibit",
+    "description": "Individual exhibit instances. Each traveling show at a new venue is a separate entry."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "museum": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::hakubutsukan-museum.hakubutsukan-museum",
+      "inversedBy": "exhibits"
+    },
+    "description": {
+      "type": "text"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "exhibit_url": {
+      "type": "string"
+    }
+  }
+}

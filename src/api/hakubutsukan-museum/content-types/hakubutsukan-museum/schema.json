@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hakubutsukan_museums",
+  "info": {
+    "singularName": "hakubutsukan-museum",
+    "pluralName": "hakubutsukan-museums",
+    "displayName": "Hakubutsukan Museum",
+    "description": "Curated LA museums, galleries, and cultural institutions."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "location_address": {
+      "type": "string"
+    },
+    "location_lat": {
+      "type": "float"
+    },
+    "location_lng": {
+      "type": "float"
+    },
+    "website_url": {
+      "type": "string"
+    },
+    "ticket_url": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["open", "temp_closed", "permanently_closed"],
+      "default": "open",
+      "required": true
+    },
+    "tags": {
+      "type": "json"
+    },
+    "exhibits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hakubutsukan-exhibit.hakubutsukan-exhibit",
+      "mappedBy": "museum"
+    }
+  }
+}
