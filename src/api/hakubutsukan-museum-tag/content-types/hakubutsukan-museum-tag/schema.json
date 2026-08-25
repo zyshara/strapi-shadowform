@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hakubutsukan_museum_tags",
+  "info": {
+    "singularName": "hakubutsukan-museum-tag",
+    "pluralName": "hakubutsukan-museum-tags",
+    "displayName": "Hakubutsukan Museum Tag"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "museums": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hakubutsukan-museum.hakubutsukan-museum",
+      "inversedBy": "tags"
+    }
+  }
+}

@@ -42,14 +42,17 @@
       "required": false,
       "allowedTypes": ["images"]
     },
-    "status": {
+    "museum_status": {
       "type": "enumeration",
       "enum": ["open", "temp_closed", "permanently_closed"],
       "default": "open",
       "required": true
     },
     "tags": {
-      "type": "json"
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hakubutsukan-museum-tag.hakubutsukan-museum-tag",
+      "mappedBy": "museums"
     },
     "exhibits": {
       "type": "relation",

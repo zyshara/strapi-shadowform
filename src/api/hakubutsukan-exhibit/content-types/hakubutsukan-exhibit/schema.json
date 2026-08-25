@@ -36,6 +36,12 @@
     },
     "exhibit_url": {
       "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hakubutsukan-exhibit-tag.hakubutsukan-exhibit-tag",
+      "mappedBy": "exhibits"
     }
   }
 }
