@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jenis32_accounts",
+  "info": {
+    "singularName": "jenis32-account",
+    "pluralName": "jenis32-accounts",
+    "displayName": "Jenis32 Account"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "jenis32_account"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "isHost": {
+      "type": "boolean",
+      "default": false
+    },
+    "submissions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::jenis32-submission.jenis32-submission",
+      "mappedBy": "account"
+    }
+  }
+}

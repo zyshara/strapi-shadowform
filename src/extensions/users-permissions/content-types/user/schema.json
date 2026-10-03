@@ -71,6 +71,12 @@
       "relation": "oneToOne",
       "target": "api::wedding-guest-profile.wedding-guest-profile",
       "mappedBy": "user"
+    },
+    "jenis32_account": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::jenis32-account.jenis32-account",
+      "mappedBy": "user"
     }
   }
 }

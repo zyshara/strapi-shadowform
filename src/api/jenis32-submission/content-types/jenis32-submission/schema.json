@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jenis32_submissions",
+  "info": {
+    "singularName": "jenis32-submission",
+    "pluralName": "jenis32-submissions",
+    "displayName": "Jenis32 Submission"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "account": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenis32-account.jenis32-account",
+      "inversedBy": "submissions"
+    },
+    "activity": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jenis32-activity.jenis32-activity"
+    },
+    "textValue": {
+      "type": "text"
+    },
+    "jsonValue": {
+      "type": "json"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "videos", "audios"]
+    },
+    "sourceMedia": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "caption": {
+      "type": "string"
+    },
+    "hidden": {
+      "type": "boolean",
+      "default": false
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

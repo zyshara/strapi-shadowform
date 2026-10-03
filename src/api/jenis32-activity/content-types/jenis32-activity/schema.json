@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jenis32_activities",
+  "info": {
+    "singularName": "jenis32-activity",
+    "pluralName": "jenis32-activities",
+    "displayName": "Jenis32 Activity"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "prompt": {
+      "type": "text"
+    },
+    "helpText": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "profile",
+        "text",
+        "longtext",
+        "drawing",
+        "media",
+        "photo-decorate",
+        "message-gif",
+        "audio",
+        "runaway"
+      ],
+      "required": true
+    },
+    "config": {
+      "type": "json"
+    },
+    "group": {
+      "type": "enumeration",
+      "enum": ["anytime", "party"],
+      "default": "anytime",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

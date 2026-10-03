@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "jenis32_configs",
+  "info": {
+    "singularName": "jenis32-config",
+    "pluralName": "jenis32-configs",
+    "displayName": "Jenis32 Config"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "partyStart": {
+      "type": "datetime"
+    },
+    "discordInvite": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "enumeration",
+      "enum": ["collecting", "gallery"],
+      "default": "collecting",
+      "required": true
+    },
+    "modeloCardMedia": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images", "videos"]
+    },
+    "modeloCardCaption": {
+      "type": "string"
+    },
+    "introCopy": {
+      "type": "richtext"
+    },
+    "outroCopy": {
+      "type": "richtext"
+    }
+  }
+}

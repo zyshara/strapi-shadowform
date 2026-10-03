@@ -1116,6 +1116,42 @@ export interface ApiGuestbookGuestbook extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHakubutsukanExhibitTagHakubutsukanExhibitTag
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hakubutsukan_exhibit_tags';
+  info: {
+    displayName: 'Hakubutsukan Exhibit Tag';
+    pluralName: 'hakubutsukan-exhibit-tags';
+    singularName: 'hakubutsukan-exhibit-tag';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    exhibits: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::hakubutsukan-exhibit.hakubutsukan-exhibit'
+    >;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hakubutsukan-exhibit-tag.hakubutsukan-exhibit-tag'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHakubutsukanExhibitHakubutsukanExhibit
   extends Struct.CollectionTypeSchema {
   collectionName: 'hakubutsukan_exhibits';
@@ -1148,7 +1184,83 @@ export interface ApiHakubutsukanExhibitHakubutsukanExhibit
     >;
     publishedAt: Schema.Attribute.DateTime;
     start_date: Schema.Attribute.Date;
+    tags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::hakubutsukan-exhibit-tag.hakubutsukan-exhibit-tag'
+    >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHakubutsukanHeroImageHakubutsukanHeroImage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hakubutsukan_hero_images';
+  info: {
+    description: 'Artwork images displayed in the hakubutsukan-la hero panel.';
+    displayName: 'Hakubutsukan Hero Image';
+    pluralName: 'hakubutsukan-hero-images';
+    singularName: 'hakubutsukan-hero-image';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    artists: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hakubutsukan-hero-image.hakubutsukan-hero-image'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.String;
+  };
+}
+
+export interface ApiHakubutsukanMuseumTagHakubutsukanMuseumTag
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hakubutsukan_museum_tags';
+  info: {
+    displayName: 'Hakubutsukan Museum Tag';
+    pluralName: 'hakubutsukan-museum-tags';
+    singularName: 'hakubutsukan-museum-tag';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hakubutsukan-museum-tag.hakubutsukan-museum-tag'
+    > &
+      Schema.Attribute.Private;
+    museums: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::hakubutsukan-museum.hakubutsukan-museum'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1185,22 +1297,198 @@ export interface ApiHakubutsukanMuseumHakubutsukanMuseum
     location_address: Schema.Attribute.String;
     location_lat: Schema.Attribute.Float;
     location_lng: Schema.Attribute.Float;
+    museum_status: Schema.Attribute.Enumeration<
+      ['open', 'temp_closed', 'permanently_closed']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'open'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    status: Schema.Attribute.Enumeration<
-      ['open', 'temp_closed', 'permanently_closed']
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'open'>;
-    tags: Schema.Attribute.JSON;
+    tags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::hakubutsukan-museum-tag.hakubutsukan-museum-tag'
+    >;
     ticket_url: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     website_url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiJenis32AccountJenis32Account
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'jenis32_accounts';
+  info: {
+    displayName: 'Jenis32 Account';
+    pluralName: 'jenis32-accounts';
+    singularName: 'jenis32-account';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    avatar: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    firstName: Schema.Attribute.String;
+    isHost: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    lastName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jenis32-account.jenis32-account'
+    > &
+      Schema.Attribute.Private;
+    nickname: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    submissions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jenis32-submission.jenis32-submission'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiJenis32ActivityJenis32Activity
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'jenis32_activities';
+  info: {
+    displayName: 'Jenis32 Activity';
+    pluralName: 'jenis32-activities';
+    singularName: 'jenis32-activity';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    config: Schema.Attribute.JSON;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    group: Schema.Attribute.Enumeration<['anytime', 'party']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'anytime'>;
+    helpText: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jenis32-activity.jenis32-activity'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    prompt: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    required: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<
+      [
+        'profile',
+        'text',
+        'longtext',
+        'drawing',
+        'media',
+        'photo-decorate',
+        'message-gif',
+        'audio',
+        'runaway',
+      ]
+    > &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiJenis32ConfigJenis32Config extends Struct.SingleTypeSchema {
+  collectionName: 'jenis32_configs';
+  info: {
+    displayName: 'Jenis32 Config';
+    pluralName: 'jenis32-configs';
+    singularName: 'jenis32-config';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    discordInvite: Schema.Attribute.String;
+    introCopy: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jenis32-config.jenis32-config'
+    > &
+      Schema.Attribute.Private;
+    mode: Schema.Attribute.Enumeration<['collecting', 'gallery']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'collecting'>;
+    modeloCardCaption: Schema.Attribute.String;
+    modeloCardMedia: Schema.Attribute.Media<'images' | 'videos'>;
+    outroCopy: Schema.Attribute.RichText;
+    partyStart: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiJenis32SubmissionJenis32Submission
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'jenis32_submissions';
+  info: {
+    displayName: 'Jenis32 Submission';
+    pluralName: 'jenis32-submissions';
+    singularName: 'jenis32-submission';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    account: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::jenis32-account.jenis32-account'
+    >;
+    activity: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::jenis32-activity.jenis32-activity'
+    >;
+    caption: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    hidden: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    jsonValue: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jenis32-submission.jenis32-submission'
+    > &
+      Schema.Attribute.Private;
+    media: Schema.Attribute.Media<'images' | 'videos' | 'audios', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    sourceMedia: Schema.Attribute.Media<'images'>;
+    textValue: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -2158,6 +2446,10 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    jenis32_account: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::jenis32-account.jenis32-account'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -2221,8 +2513,15 @@ declare module '@strapi/strapi' {
       'api::guestbook-entry.guestbook-entry': ApiGuestbookEntryGuestbookEntry;
       'api::guestbook-tag.guestbook-tag': ApiGuestbookTagGuestbookTag;
       'api::guestbook.guestbook': ApiGuestbookGuestbook;
+      'api::hakubutsukan-exhibit-tag.hakubutsukan-exhibit-tag': ApiHakubutsukanExhibitTagHakubutsukanExhibitTag;
       'api::hakubutsukan-exhibit.hakubutsukan-exhibit': ApiHakubutsukanExhibitHakubutsukanExhibit;
+      'api::hakubutsukan-hero-image.hakubutsukan-hero-image': ApiHakubutsukanHeroImageHakubutsukanHeroImage;
+      'api::hakubutsukan-museum-tag.hakubutsukan-museum-tag': ApiHakubutsukanMuseumTagHakubutsukanMuseumTag;
       'api::hakubutsukan-museum.hakubutsukan-museum': ApiHakubutsukanMuseumHakubutsukanMuseum;
+      'api::jenis32-account.jenis32-account': ApiJenis32AccountJenis32Account;
+      'api::jenis32-activity.jenis32-activity': ApiJenis32ActivityJenis32Activity;
+      'api::jenis32-config.jenis32-config': ApiJenis32ConfigJenis32Config;
+      'api::jenis32-submission.jenis32-submission': ApiJenis32SubmissionJenis32Submission;
       'api::linktree.linktree': ApiLinktreeLinktree;
       'api::management-page.management-page': ApiManagementPageManagementPage;
       'api::nail-polish-brand.nail-polish-brand': ApiNailPolishBrandNailPolishBrand;
